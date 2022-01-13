@@ -1,13 +1,16 @@
 version: "3"
 services:
-  drone-server:
-    container_name: drone-server
+  drone_server:
+    container_name: drone_server
     image: drone/drone:latest
     ports:
       - 25555:80
     volumes:
       - db-data:/var/lib/drone/
     restart: always
+    networks:
+      droneio:
+        ipv4_address: 172.111.0.46
     environment:
       # - DRONE_OPEN=false
       - DRONE_SERVER_HOST=cc85-115-135-30-111.ngrok.io # tunnel hostname
@@ -19,14 +22,28 @@ services:
       - DRONE_RPC_SECRET=75a4acae5a89382b5b6d51d671880cf4
     expose:
       - 25555
-  drone-runner:
-    container_name: drone-runner
+  drone_runner:
+    depends_on:
+      - drone_server
+    container_name: drone_runner
     image: drone/drone-runner-docker
     restart: always
+    networks:
+      droneio:
+        ipv4_address: 172.111.0.3
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - DRONE_RPC_PROTO=http
-      - DRONE_RPC_HOST=drone-server:25555
+      - DRONE_RPC_HOST=cc85-115-135-30-111.ngrok.io
       - DRONE_RPC_SECRET=75a4acae5a89382b5b6d51d671880cf4
       - DRONE_RUNNER_CAPACITY=4
 volumes:
   db-data:
+networks:
+  droneio:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.111.0.0/24
