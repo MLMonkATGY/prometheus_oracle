@@ -10,7 +10,7 @@ steps:
       - apt-get install -y curl
       - curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
         apt-get install -y nodejs
-      - git clone --branch master https://github.com/alextaygeeyang/prometheus_oracle.git
+      - git clone --branch main https://github.com/alextaygeeyang/prometheus_oracle.git
       - cd /prometheus_oracle
       - npm ci
       - npm test
