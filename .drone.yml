@@ -6,8 +6,8 @@ steps:
   - name: test
     image: mcr.microsoft.com/playwright:v1.17.1-focal
     commands:
-      - apt update
       - git clone --branch main https://github.com/alextaygeeyang/prometheus_oracle.git
-      - cd /prometheus_oracle
+      - git checkout $DRONE_COMMIT
+      - cd prometheus_oracle
       - npm ci
       - npm test
