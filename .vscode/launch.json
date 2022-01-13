@@ -9,6 +9,17 @@
 			"program": "${workspaceFolder}/src/domain/run.ts",
 			"outFiles": ["${workspaceFolder}/out/**/*.js"],
 			"preLaunchTask": "tsc: build - tsconfig.json"
+		},
+		{
+			"type": "node",
+			"name": "vscode-jest-tests",
+			"request": "launch",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"disableOptimisticBPs": true,
+			"program": "${workspaceFolder}/jest",
+			"cwd": "${workspaceFolder}",
+			"args": ["--runInBand", "--watchAll=false"]
 		}
 	]
 }
