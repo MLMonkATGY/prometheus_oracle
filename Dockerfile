@@ -4,5 +4,6 @@ RUN apt-get update && apt-get install -y curl && \
     apt-get install -y nodejs
 RUN git clone --branch master https://github.com/alextaygeeyang/prometheus_oracle.git
 WORKDIR /prometheus_oracle
+RUN npm ci
 RUN npm test
 ENTRYPOINT ["npm", "start"]
