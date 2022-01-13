@@ -1,0 +1,21 @@
+{
+	"name": "prometheus_oracle",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc -p ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/alextaygeeyang/prometheus_oracle.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/alextaygeeyang/prometheus_oracle/issues"
+	},
+	"homepage": "https://github.com/alextaygeeyang/prometheus_oracle#readme"
+}
