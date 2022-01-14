@@ -1,49 +1,28 @@
-version: "3"
+version: "3.8"
+
 services:
-  drone_server:
-    container_name: drone_server
-    image: drone/drone:latest
-    ports:
-      - 25555:80
-    volumes:
-      - db-data:/var/lib/drone/
-    restart: always
+  postgresdb:
+    image: postgres:13.0-alpine
     networks:
-      droneio:
-        ipv4_address: 172.111.0.46
+      prometheus_oracle_network:
+        ipv4_address: 172.78.0.44
+    volumes:
+      - prometheus_oracle_postgres:/var/lib/postgresql/data/
     environment:
-      # - DRONE_OPEN=false
-      - DRONE_SERVER_HOST=cc85-115-135-30-111.ngrok.io # tunnel hostname
-      - DRONE_GITHUB_SERVER=https://github.com
-      - DRONE_ADMIN=alextay96
-      - DRONE_GITHUB_CLIENT_ID=f4ae3fc2db3b08533aa4
-      - DRONE_GITHUB_CLIENT_SECRET=cd7491dfa51e764443cd52f2bb0239e572022f0a
-      - DRONE_SERVER_PROTO=http # tunnel adds https on top
-      - DRONE_RPC_SECRET=75a4acae5a89382b5b6d51d671880cf4
+      - POSTGRES_USER=oracle_alextay
+      - POSTGRES_PASSWORD=oracle_alextay
+      - POSTGRES_DB=prometheus_oracle
     expose:
-      - 25555
-  drone_runner:
-    depends_on:
-      - drone_server
-    container_name: drone_runner
-    image: drone/drone-runner-docker
-    restart: always
-    networks:
-      droneio:
-        ipv4_address: 172.111.0.3
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - DRONE_RPC_PROTO=http
-      - DRONE_RPC_HOST=cc85-115-135-30-111.ngrok.io
-      - DRONE_RPC_SECRET=75a4acae5a89382b5b6d51d671880cf4
-      - DRONE_RUNNER_CAPACITY=4
+      - 5432
+    container_name: prometheus_oracle_postgres
+
 volumes:
-  db-data:
+  prometheus_oracle_postgres:
+
 networks:
-  droneio:
+  prometheus_oracle_network:
     driver: bridge
     ipam:
       driver: default
       config:
-        - subnet: 172.111.0.0/24
+        - subnet: 172.78.0.0/24
