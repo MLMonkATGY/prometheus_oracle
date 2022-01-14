@@ -6,7 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"build": "tsc -p .",
-		"test": "playwright test --config=playwright.config.ts"
+		"pretest": "tsc --incremental -p tsconfig.json",
+		"test": "tsc --incremental -p tsconfig.json && playwright test -c out"
 	},
 	"repository": {
 		"type": "git",
@@ -23,6 +24,8 @@
 		"ts-jest": "^27.1.2"
 	},
 	"dependencies": {
+		"@babel/plugin-proposal-class-properties": "^7.16.7",
+		"@babel/plugin-proposal-decorators": "^7.16.7",
 		"@mikro-orm/core": "^4.5.10",
 		"@mikro-orm/postgresql": "^4.5.10",
 		"@playwright/test": "^1.17.2",
