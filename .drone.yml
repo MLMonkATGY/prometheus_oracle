@@ -15,7 +15,7 @@ trigger:
   branch:
     - feat-2
 services:
-  - name: postgresdb
+  - name: prometheus_oracle_postgres
     image: postgres:13.0-alpine
     environment:
       POSTGRES_USER: oracle_alextay
