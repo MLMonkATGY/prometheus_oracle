@@ -7,7 +7,7 @@ import Book from "../src/repo/table/Book.js";
 // });
 
 test("test add find delete ", async ({ page }) => {
-	const em = await ConnectionManager();
+	const em = await ConnectionManager(true);
 	const title = "aaa";
 	const a2 = 4;
 	const payload = new Book(title, a2);
