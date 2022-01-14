@@ -19,7 +19,7 @@
         "testMatch": [
           "**/?(*.)@(spec|test).@(ts|js|mjs)"
         ],
-        "timeout": 20000
+        "timeout": 0
       }
     ],
     "reporter": [
@@ -55,12 +55,12 @@
       "column": 0,
       "specs": [
         {
-          "title": "test connection ",
+          "title": "test adding data ",
           "ok": true,
           "tags": [],
           "tests": [
             {
-              "timeout": 20000,
+              "timeout": 0,
               "annotations": [],
               "expectedStatus": "passed",
               "projectName": "",
@@ -68,12 +68,8 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 275,
-                  "stdout": [
-                    {
-                      "text": "[EntityManager<1>]\n"
-                    }
-                  ],
+                  "duration": 8053,
+                  "stdout": [],
                   "stderr": [],
                   "retry": 0,
                   "attachments": []
@@ -83,7 +79,7 @@
             }
           ],
           "file": "tests/connection.test.js",
-          "line": 3,
+          "line": 8,
           "column": 1
         }
       ]
@@ -100,7 +96,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 20000,
+              "timeout": 0,
               "annotations": [],
               "expectedStatus": "passed",
               "projectName": "",
@@ -108,7 +104,7 @@
                 {
                   "workerIndex": 1,
                   "status": "passed",
-                  "duration": 1554,
+                  "duration": 1598,
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,

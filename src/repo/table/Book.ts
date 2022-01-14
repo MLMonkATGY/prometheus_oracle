@@ -21,5 +21,9 @@ class Book {
 	version!: number;
 	@Property({ onUpdate: () => new Date() })
 	updatedAt: Date = new Date();
+	constructor(title: string, author2: number) {
+		this.title = title;
+		this.author2 = author2;
+	}
 }
 export default Book;

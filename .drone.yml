@@ -14,3 +14,10 @@ steps:
 trigger:
   branch:
     - dev-ci
+services:
+  - name: postgresdb
+    image: postgres:13.0-alpine
+    environment:
+      POSTGRES_USER: oracle_alextay
+      POSTGRES_PASSWORD: oracle_alextay
+      POSTGRES_DB: prometheus_oracle

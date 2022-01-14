@@ -1,9 +1,16 @@
-import { MikroORM } from "@mikro-orm/core";
+import { MikroORM, IDatabaseDriver, Connection } from "@mikro-orm/core";
 import Book from "../table/Book.js";
-export const ConnectionManager = async () => {
+
+const initSchema = async (orm: MikroORM<IDatabaseDriver<Connection>>) => {
+	const generator = orm.getSchemaGenerator();
+
+	await generator.createSchema();
+};
+
+export const ConnectionManager = async (init: boolean = false) => {
 	const username = "oracle_alextay";
 	const password = "oracle_alextay";
-	const ip = "172.78.0.44";
+	const ip = "postgresdb";
 	const cwd = process.cwd();
 	const orm = await MikroORM.init({
 		entities: [Book],
@@ -13,11 +20,9 @@ export const ConnectionManager = async () => {
 		type: "postgresql", // one of `mongo` | `mysql` | `mariadb` | `postgresql` | `sqlite`
 		clientUrl: `postgresql://${username}:${password}@${ip}:5432`, // defaults to 'mongodb://localhost:27017' for mongodb driver
 	});
-	console.log(orm.em); // access EntityManager via `em` property
-	const generator = orm.getSchemaGenerator();
-	await generator.dropSchema();
+	if (init) {
+		await initSchema(orm);
+	}
 
-	await generator.createSchema();
-
-	return orm;
+	return orm.em.fork();
 };

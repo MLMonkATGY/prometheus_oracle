@@ -5,8 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"build": "tsc -p .",
-		"pretest": "tsc --incremental -p tsconfig.json",
+		"build": "tsc --incremental -p tsconfig.json",
 		"test": "tsc --incremental -p tsconfig.json && playwright test -c out"
 	},
 	"repository": {

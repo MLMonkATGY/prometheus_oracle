@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
 		headless: true,
 		actionTimeout: 8000,
 	},
-	workers: process.env.CI ? 3 : undefined,
+	workers: process.env.CI ? 2 : undefined,
 	reporter: [["list"], ["json", { outputFile: "reports.json" }]],
 	timeout: 20000,
 };
