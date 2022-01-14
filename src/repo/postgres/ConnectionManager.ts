@@ -1,16 +1,20 @@
 import { MikroORM, IDatabaseDriver, Connection } from "@mikro-orm/core";
 import Book from "../table/Book.js";
-
+import getSettings from "../settings.js";
+const envSettings = getSettings();
 const initSchema = async (orm: MikroORM<IDatabaseDriver<Connection>>) => {
 	const generator = orm.getSchemaGenerator();
-
-	await generator.createSchema();
+	try {
+		await generator.createSchema();
+	} catch (err) {
+		console.log("Relations already exist. Skip creation.");
+	}
 };
 
 export const ConnectionManager = async (init: boolean = false) => {
 	const username = "oracle_alextay";
 	const password = "oracle_alextay";
-	const ip = "prometheus_oracle_postgres";
+	const ip = envSettings.dbSettings.host;
 	const cwd = process.cwd();
 	const orm = await MikroORM.init({
 		entities: [Book],
