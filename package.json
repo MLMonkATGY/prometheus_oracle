@@ -28,6 +28,7 @@
 		"@mikro-orm/core": "^4.5.10",
 		"@mikro-orm/postgresql": "^4.5.10",
 		"@playwright/test": "^1.17.2",
+		"@types/config": "^0.0.41",
 		"jest": "^27.4.7",
 		"ts-node": "^10.4.0"
 	}
