@@ -19,7 +19,7 @@
         "testMatch": [
           "**/?(*.)@(spec|test).@(ts|js|mjs)"
         ],
-        "timeout": 0
+        "timeout": 20000
       }
     ],
     "reporter": [
@@ -55,27 +55,31 @@
       "column": 0,
       "specs": [
         {
-          "title": "test adding data ",
-          "ok": true,
+          "title": "test add find delete ",
+          "ok": false,
           "tags": [],
           "tests": [
             {
-              "timeout": 0,
+              "timeout": 20000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectName": "",
               "results": [
                 {
                   "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 8053,
+                  "status": "failed",
+                  "duration": 389,
+                  "error": {
+                    "message": "getaddrinfo EAI_AGAIN postgresdb",
+                    "stack": "Error: getaddrinfo EAI_AGAIN postgresdb\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)"
+                  },
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
                   "attachments": []
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "file": "tests/connection.test.js",
@@ -96,7 +100,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 0,
+              "timeout": 20000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectName": "",
@@ -104,7 +108,7 @@
                 {
                   "workerIndex": 1,
                   "status": "passed",
-                  "duration": 1598,
+                  "duration": 1608,
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,

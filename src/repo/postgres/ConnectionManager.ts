@@ -10,7 +10,7 @@ const initSchema = async (orm: MikroORM<IDatabaseDriver<Connection>>) => {
 export const ConnectionManager = async (init: boolean = false) => {
 	const username = "oracle_alextay";
 	const password = "oracle_alextay";
-	const ip = "postgresdb";
+	const ip = "172.78.0.44";
 	const cwd = process.cwd();
 	const orm = await MikroORM.init({
 		entities: [Book],
