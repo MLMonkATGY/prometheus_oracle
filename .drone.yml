@@ -13,7 +13,7 @@ steps:
       - npm test
 trigger:
   branch:
-    - dev-ci
+    - feat-2
 services:
   - name: postgresdb
     image: postgres:13.0-alpine
