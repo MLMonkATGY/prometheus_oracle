@@ -11,3 +11,6 @@ steps:
       - cd prometheus_oracle
       - npm ci
       - npm test
+trigger:
+  branch:
+    - dev-ci
