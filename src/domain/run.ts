@@ -1,4 +1,7 @@
-const run = (a: number, b: number) => {
+import { ConnectionManager } from "../repo/postgres/ConnectionManager.js";
+
+const run = async (a: number, b: number) => {
+	const conn = await ConnectionManager();
 	console.log(a + b);
 	return a + b;
 };

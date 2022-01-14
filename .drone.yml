@@ -6,11 +6,18 @@ steps:
   - name: test
     image: mcr.microsoft.com/playwright:v1.17.1-focal
     commands:
-      - git clone --branch main https://github.com/alextaygeeyang/prometheus_oracle.git
+      - git clone --branch feat-2 https://github.com/alextaygeeyang/prometheus_oracle.git
       - git checkout $DRONE_COMMIT
       - cd prometheus_oracle
       - npm ci
       - npm test
 trigger:
   branch:
-    - dev-ci
+    - feat-2
+services:
+  - name: prometheus_oracle_postgres
+    image: postgres:13.0-alpine
+    environment:
+      POSTGRES_USER: oracle_alextay
+      POSTGRES_PASSWORD: oracle_alextay
+      POSTGRES_DB: prometheus_oracle

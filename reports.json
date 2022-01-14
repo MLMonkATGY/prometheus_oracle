@@ -14,7 +14,7 @@
         "repeatEach": 1,
         "retries": 0,
         "name": "",
-        "testDir": "/home/alextay96/Desktop/workspace/prometheus_oracle",
+        "testDir": "/home/alextay96/Desktop/workspace/prometheus_oracle/out",
         "testIgnore": [],
         "testMatch": [
           "**/?(*.)@(spec|test).@(ts|js|mjs)"
@@ -38,19 +38,59 @@
       "max": 5,
       "threshold": 15000
     },
-    "rootDir": "/home/alextay96/Desktop/workspace/prometheus_oracle",
+    "rootDir": "/home/alextay96/Desktop/workspace/prometheus_oracle/out",
     "quiet": false,
     "shard": null,
     "updateSnapshots": "missing",
     "version": "1.17.2",
     "workers": 3,
     "webServer": null,
-    "__testGroupsCount": 1
+    "__testGroupsCount": 2
   },
   "suites": [
     {
-      "title": "tests/hellow.test.ts",
-      "file": "tests/hellow.test.ts",
+      "title": "tests/connection.test.js",
+      "file": "tests/connection.test.js",
+      "line": 0,
+      "column": 0,
+      "specs": [
+        {
+          "title": "test add find delete ",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "failed",
+                  "duration": 389,
+                  "error": {
+                    "message": "getaddrinfo EAI_AGAIN postgresdb",
+                    "stack": "Error: getaddrinfo EAI_AGAIN postgresdb\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)"
+                  },
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "file": "tests/connection.test.js",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "tests/hellow.test.js",
+      "file": "tests/hellow.test.js",
       "line": 0,
       "column": 0,
       "specs": [
@@ -66,9 +106,9 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "status": "passed",
-                  "duration": 1663,
+                  "duration": 1608,
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
@@ -78,8 +118,8 @@
               "status": "expected"
             }
           ],
-          "file": "tests/hellow.test.ts",
-          "line": 3,
+          "file": "tests/hellow.test.js",
+          "line": 2,
           "column": 1
         }
       ]
