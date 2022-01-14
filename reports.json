@@ -19,7 +19,7 @@
         "testMatch": [
           "**/?(*.)@(spec|test).@(ts|js|mjs)"
         ],
-        "timeout": 0
+        "timeout": 20000
       }
     ],
     "reporter": [
@@ -56,73 +56,34 @@
       "specs": [
         {
           "title": "test add find delete ",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
-              "timeout": 0,
+              "timeout": 20000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectName": "",
               "results": [
                 {
                   "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 414,
-                  "stdout": [
-                    {
-                      "text": "\u001b[90m[discovery] \u001b[39mORM entity discovery started, using \u001b[36mReflectMetadataProvider\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobPostRaw\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[discovery] \u001b[39m- entity discovery finished, found \u001b[32m1\u001b[39m entities, took \u001b[32m13 ms\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[info] \u001b[39mMikroORM successfully connected to database \u001b[32mprometheus_oracle on postgresql://oracle_alextay:*****@172.78.0.44:5432\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[query] \u001b[39mselect 1 from pg_database where datname = 'prometheus_oracle'\u001b[90m [took 1 ms]\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[query] \u001b[39mset names 'utf8';\u001b[90m [took 1 ms]\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[query] \u001b[39mset session_replication_role = 'replica';\u001b[90m [took 0 ms]\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[query] \u001b[39m\u001b[31mcreate table \"job_post_raw\" (\"id\" serial primary key, \"portal_url\" varchar(255) not null, \"post_url\" varchar(255) not null, \"company_name\" varchar(255) null, \"company_url\" varchar(255) null, \"raw_content\" text not null, \"content_format\" int2 not null, \"created_at\" timestamptz(0) not null, \"updated_at\" timestamptz(0) not null, \"version\" int4 not null default 1);\u001b[39m\u001b[90m [took 2 ms]\u001b[39m\n"
-                    },
-                    {
-                      "text": "Relations already exist. Skip creation.\n"
-                    },
-                    {
-                      "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_post_raw\" as \"e0\"\u001b[90m [took 1 ms]\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[query] \u001b[39mbegin\n"
-                    },
-                    {
-                      "text": "\u001b[90m[query] \u001b[39minsert into \"job_post_raw\" (\"company_name\", \"company_url\", \"content_format\", \"created_at\", \"portal_url\", \"post_url\", \"raw_content\", \"updated_at\") values (NULL, NULL, 1, '2022-01-14T10:17:43.083Z', 'https://www.jobstreet.com.my', 'https://www.jobstreet.com.my/en/job/machine-learning-engineer-44191-4787146?jobId=jobstreet-my-job-4787146&sectionRank=1&token=0~d132bd46-81a6-42e2-9963-0884613bc971&fr=SRP%20View%20In%20New%20Tab', '\t\t\t{\t\t\"props\": {\t\t\t\"pageProps\": {\t\t\t\t\"id\": \"jobs-malaysia-claritas-consulting-asia-job-software-developer-consultant-net\",\t\t\t\t\"job\": {\t\t\t\t\t\"id\": \"0dd55ecf-1c63-4a63-9505-764878d32008\",\t\t\t\t\t\"title\": \"Software Developer Consultant (.NET)\",\t\t\t\t\t\"image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/job_images/0dd55ecf-1c63-4a63-9505-764878d32008/jobs-malaysia-software-developer-consultant-net-claritas-consulting-asia-1641436691_show.jpg\",\t\t\t\t\t\"image_thumb\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/job_images/0dd55ecf-1c63-4a63-9505-764878d32008/jobs-malaysia-software-developer-consultant-net-claritas-consulting-asia-1641436691_show.jpg\",\t\t\t\t\t\"image_mobile\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/job_images/0dd55ecf-1c63-4a63-9505-764878d32008/jobs-malaysia-software-developer-consultant-net-claritas-consulting-asia-1641436691_show.jpg\",\t\t\t\t\t\"image_position\": \"0px 0px\",\t\t\t\t\t\"image_size\": null,\t\t\t\t\t\"job_type\": \"Full-Time\",\t\t\t\t\t\"tracks\": [{ \"id\": \"32\", \"title\": \"IT - Software Development\" }],\t\t\t\t\t\"track_id\": null,\t\t\t\t\t\"state_region\": \"Selangor\",\t\t\t\t\t\"location\": \"Jaya One / Petaling Jaya\",\t\t\t\t\t\"description\": \"<div>You will work in a software consulting team to build and support Claritas suites of business software on CRM, eCommerce &amp; Analytics. You will get to involved in technology on cloud, big data and AI. This is an opportunity for you to work in a dynamic environment where you must take pride in module ownership and passionate in continuous improvement.<br><br><strong>Job Responsibilities</strong></div><ul><li><!--block-->Develop robust, reliable &amp; high traffic business application (backend, frontend, mobile).</li><li><!--block-->Maintain and constantly optimize system, process and user experience of business application.</li><li><!--block-->Build, deploy and support custom portals and/or micro sites.</li><li><!--block-->Work closely with customers and various department on product improvement.</li></ul>\",\t\t\t\t\t\"short_description\": \"You will work in a software consulting team to build and support Claritas suites of business software on CRM, eCommerce & Analytics.\",\t\t\t\t\t\"requirements\": \"<ul><li>At least 1 year web and/or mobile programming experience.</li><li><!--block-->Must possess at least a professional certificate, degree or diploma in Computer Science, Software Engineering or equivalent.</li><li><!--block-->Experience and knowledge in .NET technology stack.</li><li><!--block-->Must have good coding, analytical and problem solving skills.</li><li><!--block-->Passionate &amp; take pride in module ownership; and always look to continuous improvement.</li><li><!--block-->Demonstrate passion in latest technology and keeping up with industry trends.</li><li><!--block-->Knowledge in MVC software application architecture is an added advantage.</li><li><!--block-->Good understanding of mobile app technology is an added advantage.</li></ul>\",\t\t\t\t\t\"bookmark\": false,\t\t\t\t\t\"have_applied\": false,\t\t\t\t\t\"have_rejected\": false,\t\t\t\t\t\"created_at\": \"2022-01-06 10:38:11 +0800\",\t\t\t\t\t\"salary\": \"RM3500 - RM7000\",\t\t\t\t\t\"expired\": false,\t\t\t\t\t\"boosted\": true,\t\t\t\t\t\"slug\": \"jobs-malaysia-claritas-consulting-asia-job-software-developer-consultant-net\",\t\t\t\t\t\"active\": true,\t\t\t\t\t\"external_job_url\": \"\",\t\t\t\t\t\"secondary_company_id\": null,\t\t\t\t\t\"company\": {\t\t\t\t\t\t\"id\": \"b3bd6286-6bac-4d0e-a42c-c0081583b952\",\t\t\t\t\t\t\"name\": \"Claritas Consulting Asia\",\t\t\t\t\t\t\"register_name\": \"Claritas Consulting (Asia) Sdn Bhd\",\t\t\t\t\t\t\"type_id\": 3,\t\t\t\t\t\t\"industry\": \"Technology-Software\",\t\t\t\t\t\t\"logo\": \"//s3.ap-southeast-1.amazonaws.com/resources.wobbjobs.com/uploads/company-logo/company_logo_image/b3bd6286-6bac-4d0e-a42c-c0081583b952/claritas-consulting-asia-1618394431.PNG\",\t\t\t\t\t\t\"short_description\": \"Claritas is a enterprise cloud computing company focus on customer relationship management (CRM) and call center solutions.\",\t\t\t\t\t\t\"cover_image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25640/jobs-malaysia-claritas-consulting-asia-1618502154_show.jpg\",\t\t\t\t\t\t\"cover_image_thumb\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25640/jobs-malaysia-claritas-consulting-asia-1618502154_thumb.jpg\",\t\t\t\t\t\t\"job_count\": 2,\t\t\t\t\t\t\"bookmark\": false,\t\t\t\t\t\t\"slug\": \"claritas-consulting-asia\",\t\t\t\t\t\t\"benefits\": [\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\"title\": \"Happiness = Productivity\",\t\t\t\t\t\t\t\t\"description\": \"Get paid to work & have fun with snacks! Additional benefits for you on office carpark, dental & optical subsidy.\",\t\t\t\t\t\t\t\t\"icon_code\": \"heart\"\t\t\t\t\t\t\t},\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\"title\": \"Flexi and Casual Everyday\",\t\t\t\t\t\t\t\t\"description\": \"Flexi and casual everyday - We are project-oriented and result driven.\r\",\t\t\t\t\t\t\t\t\"icon_code\": \"heart\"\t\t\t\t\t\t\t},\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\"title\": \"Insurance Coverage\",\t\t\t\t\t\t\t\t\"description\": \"Life + medical insurance coverage for confirmed staff - Your medical is taken care of.\r\",\t\t\t\t\t\t\t\t\"icon_code\": \"heart\"\t\t\t\t\t\t\t}\t\t\t\t\t\t],\t\t\t\t\t\t\"profile\": {\t\t\t\t\t\t\t\"address\": \"5.049, Block J, 129 Offices, 72A, Jln Profesor Diraja Ungku Aziz, 46200 Petaling Jaya, Selangor, Malaysia.\",\t\t\t\t\t\t\t\"latitude\": 3.1184035,\t\t\t\t\t\t\t\"longitude\": 101.6354371,\t\t\t\t\t\t\t\"descriptions\": [\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"title\": \"About Us\",\t\t\t\t\t\t\t\t\t\"body\": \"<div>Large enterprises are increasingly looking to cloud computing as a platform for the future. At Claritas, we are helping companies and brands around APAC region with strategies on how to leverage the power of cloud and AI. Claritas provides innovative cloud business platform for CRM, E-commerce &amp; Contact Center. As top 10 CRM technology provider, Claritas team has over 10 years of experience and serving 600+ customer success stories across South East Asia. Find out about our product suites at Claritascrm.com, Claritascommerce.com &amp; Claritascloud.com. We are expanding the team in Malaysia. This is a great opportunity for dynamic and passionate candidates to work with us on cutting edge technologies and enterprise projects around the region. Explore your career with us today!</div>\"\t\t\t\t\t\t\t\t},\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"title\": \"Why Us?\",\t\t\t\t\t\t\t\t\t\"body\": \"<ul><li>Happiness is new productivity -&nbsp; Get paid to work &amp; have fun with snacks all day long.</li><li>Life + medical insurance coverage for confirmed staff - Your medical is taken care of.</li><li>Flexi and casual everyday - We are project-oriented and result driven.</li><li>Additional benefits for you on office carpark, dental &amp; optical subsidy.</li></ul>\"\t\t\t\t\t\t\t\t}\t\t\t\t\t\t\t],\t\t\t\t\t\t\t\"images\": [\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"cover\": true,\t\t\t\t\t\t\t\t\t\"image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25640/jobs-malaysia-claritas-consulting-asia-1618502154_show.jpg\"\t\t\t\t\t\t\t\t},\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"cover\": false,\t\t\t\t\t\t\t\t\t\"image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25641/jobs-malaysia-claritas-consulting-asia-1618502670_show.jpg\"\t\t\t\t\t\t\t\t},\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"cover\": false,\t\t\t\t\t\t\t\t\t\"image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25642/jobs-malaysia-claritas-consulting-asia-1618502493_show.jpeg\"\t\t\t\t\t\t\t\t},\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"cover\": false,\t\t\t\t\t\t\t\t\t\"image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25643/jobs-malaysia-claritas-consulting-asia-1618502586_show.jpeg\"\t\t\t\t\t\t\t\t}\t\t\t\t\t\t\t],\t\t\t\t\t\t\t\"videos\": [],\t\t\t\t\t\t\t\"extras\": []\t\t\t\t\t\t}\t\t\t\t\t},\t\t\t\t\t\"image_sharing\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/job_images/0dd55ecf-1c63-4a63-9505-764878d32008/jobs-malaysia-software-developer-consultant-net-claritas-consulting-asia-1641436691_show.jpg\",\t\t\t\t\t\"structured_job_data\": {\t\t\t\t\t\t\"@context\": \"http://schema.org/\",\t\t\t\t\t\t\"@type\": \"JobPosting\",\t\t\t\t\t\t\"title\": \"Software Developer Consultant (.NET)\",\t\t\t\t\t\t\"description\": \"You will work in a software consulting team to build and support Claritas suites of business software on CRM, eCommerce and Analytics. You will get to involved in technology on cloud, big data and AI. This is an opportunity for you to work in a dynamic environment where you must take pride in module ownership and passionate in continuous improvement. Job Responsibilities -Develop robust, reliable and high traffic business application (backend, frontend, mobile). -Maintain and constantly optimize system, process and user experience of business application. -Build, deploy and support custom portals and/or micro sites. -Work closely with customers and various department on product improvement.\",\t\t\t\t\t\t\"datePosted\": \"2022-01-06\",\t\t\t\t\t\t\"hiringOrganization\": {\t\t\t\t\t\t\t\"@type\": \"Organization\",\t\t\t\t\t\t\t\"name\": \"Claritas Consulting Asia\",\t\t\t\t\t\t\t\"sameAs\": \"http://www.claritas.asia\",\t\t\t\t\t\t\t\"logo\": \"https://resources.wobbjobs.com/uploads/company-logo/company_logo_image/b3bd6286-6bac-4d0e-a42c-c0081583b952/claritas-consulting-asia-1618394431.PNG\"\t\t\t\t\t\t},\t\t\t\t\t\t\"validThrough\": \"2023-01-03T15:09:41+08:00\",\t\t\t\t\t\t\"baseSalary\": {\t\t\t\t\t\t\t\"@type\": \"MonetaryAmount\",\t\t\t\t\t\t\t\"currency\": \"MYR\",\t\t\t\t\t\t\t\"value\": {\t\t\t\t\t\t\t\t\"@type\": \"QuantitativeValue\",\t\t\t\t\t\t\t\t\"minValue\": 3500,\t\t\t\t\t\t\t\t\"maxValue\": 7000,\t\t\t\t\t\t\t\t\"unitText\": \"MONTH\"\t\t\t\t\t\t\t}\t\t\t\t\t\t},\t\t\t\t\t\t\"jobLocation\": {\t\t\t\t\t\t\t\"@type\": \"Place\",\t\t\t\t\t\t\t\"address\": {\t\t\t\t\t\t\t\t\"@type\": \"PostalAddress\",\t\t\t\t\t\t\t\t\"streetAddress\": \"C-31-1, Jalan Profesor Diraja Ungku Aziz\",\t\t\t\t\t\t\t\t\"addressLocality\": \"Petaling Jaya\",\t\t\t\t\t\t\t\t\"addressRegion\": \"Selangor\",\t\t\t\t\t\t\t\t\"postalCode\": \"46200\",\t\t\t\t\t\t\t\t\"addressCountry\": \"MY\"\t\t\t\t\t\t\t}\t\t\t\t\t\t},\t\t\t\t\t\t\"employmentType\": \"FULL_TIME\"\t\t\t\t\t}\t\t\t\t}\t\t\t},\t\t\t\"__N_SSG\": true\t\t},\t\t\"page\": \"/jobs/[id]\",\t\t\"query\": {\t\t\t\"id\": \"jobs-malaysia-claritas-consulting-asia-job-software-developer-consultant-net\"\t\t},\t\t\"buildId\": \"ApDBGaWCSvV7_EW0IBtKl\",\t\t\"isFallback\": false,\t\t\"gsp\": true,\t\t\"scriptLoader\": []\t}', '2022-01-14T10:17:43.083Z') returning \"id\", \"version\"\u001b[90m [took 1 ms]\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[query] \u001b[39mcommit\n"
-                    },
-                    {
-                      "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_post_raw\" as \"e0\"\u001b[90m [took 0 ms]\u001b[39m\n"
-                    }
-                  ],
+                  "status": "failed",
+                  "duration": 389,
+                  "error": {
+                    "message": "getaddrinfo EAI_AGAIN postgresdb",
+                    "stack": "Error: getaddrinfo EAI_AGAIN postgresdb\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)"
+                  },
+                  "stdout": [],
                   "stderr": [],
                   "retry": 0,
                   "attachments": []
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "file": "tests/connection.test.js",
-          "line": 160,
+          "line": 8,
           "column": 1
         }
       ]
@@ -139,7 +100,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 0,
+              "timeout": 20000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectName": "",
@@ -147,7 +108,7 @@
                 {
                   "workerIndex": 1,
                   "status": "passed",
-                  "duration": 1631,
+                  "duration": 1608,
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
