@@ -6,7 +6,7 @@
 			"request": "launch",
 			"name": "Launch Program",
 			"skipFiles": ["<node_internals>/**"],
-			"program": "${workspaceFolder}/src/domain/scheduler/scheduler.ts",
+			"program": "${workspaceFolder}/src/index.ts",
 			"outFiles": ["${workspaceFolder}/out/**/*.js"],
 			"preLaunchTask": "tsc: build - tsconfig.json"
 		}
