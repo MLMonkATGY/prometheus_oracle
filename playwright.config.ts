@@ -5,7 +5,7 @@ const config: PlaywrightTestConfig = {
 		browserName: "chromium",
 		headless: true,
 	},
-	workers: process.env.CI ? 2 : undefined,
+	workers: process.env.CI ? 2 : 3,
 	reporter: [["list"], ["json", { outputFile: "reports.json" }]],
 };
 export default config;

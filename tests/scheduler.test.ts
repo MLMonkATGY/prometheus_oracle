@@ -18,12 +18,17 @@ const wait = (ms: number) => {
 		}, ms);
 	});
 };
-test.only("test launch worker from scheduler", async ({ page }) => {
+test("test launch worker from scheduler", async ({ page }) => {
 	new Scheduler();
 	logger.info("start Ut");
 
 	await wait(10000);
 	logger.warn("Done Ut");
+
+	// scheduler.startWorker();
+});
+test("test failed test", async ({ page }) => {
+	throw new Error("Error as intended");
 
 	// scheduler.startWorker();
 });
