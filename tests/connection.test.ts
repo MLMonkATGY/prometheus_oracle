@@ -2,10 +2,10 @@ import { test, expect } from "@playwright/test";
 import ContentFormat from "../src/domain/ContentFormat.enum.js";
 import { ConnectionManager } from "../src/repo/postgres/ConnectionManager.js";
 import JobPostRaw from "../src/repo/table/JobPostRaw.js";
-// test("test connection ", async ({ page }) => {
-// 	const conn = await ConnectionManager();
-// 	expect(conn).toBeDefined();
-// });
+test.only("test connection ", async ({ page }) => {
+	const conn = await ConnectionManager();
+	expect(conn).toBeDefined();
+});
 const getRawContent = () => {
 	const rawContent = `		
 	{
