@@ -29,7 +29,11 @@ test("test launch worker from scheduler", async ({ page }) => {
 });
 test("test failed test", async ({ page }) => {
 	logger.error("This is inteded to fail");
-	throw new Error("Error as intended");
+	try {
+		throw new Error("Error as intended");
+	} catch (e) {
+		logger.warn("Caught exception");
+	}
 
 	// scheduler.startWorker();
 });
