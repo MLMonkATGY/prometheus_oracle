@@ -6,20 +6,9 @@
 			"request": "launch",
 			"name": "Launch Program",
 			"skipFiles": ["<node_internals>/**"],
-			"program": "${workspaceFolder}/src/domain/run.ts",
+			"program": "${workspaceFolder}/src/domain/scheduler/scheduler.ts",
 			"outFiles": ["${workspaceFolder}/out/**/*.js"],
 			"preLaunchTask": "tsc: build - tsconfig.json"
-		},
-		{
-			"type": "node",
-			"name": "vscode-jest-tests",
-			"request": "launch",
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"disableOptimisticBPs": true,
-			"program": "${workspaceFolder}/jest",
-			"cwd": "${workspaceFolder}",
-			"args": ["--runInBand", "--watchAll=false"]
 		}
 	]
 }
