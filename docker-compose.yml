@@ -24,14 +24,7 @@ services:
       - "5432:5432"
     expose:
       - 5432
-    container_name: prometheus_oracle_postgres
-  pg_admin:
-    image: dpage/pgadmin4:6.4
-    container_name: pgadmin4
-    networks:
-      prometheus_oracle_network:
-        ipv4_address: 172.78.0.99
-    ports:
+    conta
       - "15432:80"
     environment:
       - PGADMIN_DEFAULT_EMAIL=postgres@gmail.com
