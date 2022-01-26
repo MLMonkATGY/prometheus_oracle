@@ -31,6 +31,7 @@
 		"@types/node": "^17.0.8",
 		"jest": "^27.4.7",
 		"playwright": "^1.17.2",
+		"queue": "^6.0.2",
 		"ts-node": "^10.4.0",
 		"winston": "^3.4.0"
 	}

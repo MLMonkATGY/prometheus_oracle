@@ -7,11 +7,7 @@ import {
 	webkit,
 	Browser,
 } from "playwright";
-export enum SupportedBrowserType {
-	Chromium = 1,
-	Firefox = 2,
-	WebKit = 3,
-}
+import { SupportedBrowserType } from "./TaskDTO/SupportedBrowerType.js";
 
 export class BrowserWorker {
 	public browserInstance: Browser;
@@ -22,7 +18,7 @@ export class BrowserWorker {
 	}
 	public static async build(browserType: SupportedBrowserType) {
 		let browser: Browser | null = null;
-		const launchSettings = { headless: false };
+		const launchSettings = { headless: true };
 		switch (browserType) {
 			case SupportedBrowserType.Chromium:
 				browser = await chromium.launch(launchSettings);

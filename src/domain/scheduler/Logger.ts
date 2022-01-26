@@ -1,5 +1,4 @@
 import winston from "winston";
-const colorizer = winston.format.colorize();
 
 export const logger = winston.createLogger({
 	level: "info",
