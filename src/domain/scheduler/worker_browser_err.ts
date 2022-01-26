@@ -3,8 +3,8 @@ import { BrowserWorker, BrowserContextWorker } from "./BrowserContext.js";
 import { TaskRequestDTO } from "./TaskDTO/TaskRequestDTO";
 import { SupportedBrowserType } from "./TaskDTO/SupportedBrowerType.js";
 import { TaskResponseDTO } from "./TaskDTO/TaskResponseDTO";
-
-export class WorkerThreadProcess {
+import { IntendedTaskError } from "./Error/IntendedTaskError.js";
+export class WorkerThreadProcessError {
 	public process = async () => {
 		const received: TaskRequestDTO = workerData;
 		// console.log(`worker task : ${received}`);
@@ -13,18 +13,15 @@ export class WorkerThreadProcess {
 		const browserContextWorker = await BrowserContextWorker.build(
 			browserWorker
 		);
-
 		await browserContextWorker.launchPage();
-		const resp: TaskResponseDTO = {
-			reponse: received.taskData * 2,
-		};
-		parentPort!.postMessage(resp);
+
+		throw new IntendedTaskError();
 	};
 	public static getFileAbsolutePath() {
 		return import.meta.url;
 	}
 }
 if (parentPort && !isMainThread) {
-	const worker = new WorkerThreadProcess();
+	const worker = new WorkerThreadProcessError();
 	worker.process();
 }
