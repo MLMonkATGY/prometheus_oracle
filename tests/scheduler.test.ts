@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { Scheduler } from "../src/domain/scheduler/scheduler.js";
-import { logger } from "../src/domain/scheduler/Logger.js";
+import { logger } from "../src/domain/Logger.js";
 // test("test resolve worker fp", async ({ page }) => {
 // 	const scheduler = new Scheduler();
 // 	const rawFp = Scheduler.resolveWorkerFilePath();

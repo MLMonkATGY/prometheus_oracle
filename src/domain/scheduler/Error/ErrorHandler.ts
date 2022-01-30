@@ -1,6 +1,6 @@
 import { IntendedTaskError } from "./IntendedTaskError.js";
 import { GenericTaskErrorDTO } from "./GenericTaskErrorDTO.js";
-import { logger } from "../Logger.js";
+import { logger } from "../../Logger.js";
 let GlobalErrHandlerMap: Map<string, (inputMsg: any) => void> = new Map<
 	string,
 	(inputMsg: any) => void

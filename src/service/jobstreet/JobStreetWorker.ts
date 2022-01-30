@@ -1,10 +1,14 @@
 import { parentPort, workerData, isMainThread } from "worker_threads";
-import { BrowserWorker, BrowserContextWorker } from "./BrowserContext.js";
-import { TaskRequestDTO } from "./TaskDTO/TaskRequestDTO";
-import { SupportedBrowserType } from "./TaskDTO/SupportedBrowerType.js";
-import { TaskResponseDTO } from "./TaskDTO/TaskResponseDTO";
+import {
+	BrowserWorker,
+	BrowserContextWorker,
+} from "../../domain/scheduler/BrowserContext.js";
+import { TaskRequestDTO } from "../../domain/scheduler/TaskDTO/TaskRequestDTO";
+import { SupportedBrowserType } from "../../domain/scheduler/TaskDTO/SupportedBrowerType.js";
+import { IntendedTaskError } from "../../domain/scheduler/Error/IntendedTaskError.js";
+import { TaskResponseDTO } from "../../domain/scheduler/TaskDTO/TaskResponseDTO";
 
-export class WorkerThreadProcess {
+export class JobStreetWorker {
 	public process = async () => {
 		const received: TaskRequestDTO = workerData;
 		// console.log(`worker task : ${received}`);
@@ -13,6 +17,7 @@ export class WorkerThreadProcess {
 		const browserContextWorker = await BrowserContextWorker.build(
 			browserWorker
 		);
+
 		const page = await browserContextWorker.browserContext.newPage();
 		await page.goto("https://example.com");
 		await page.waitForTimeout(3000);
@@ -26,6 +31,6 @@ export class WorkerThreadProcess {
 	}
 }
 if (parentPort && !isMainThread) {
-	const worker = new WorkerThreadProcess();
+	const worker = new JobStreetWorker();
 	worker.process();
 }

@@ -1,8 +1,8 @@
 import { isMainThread, Worker } from "worker_threads";
-import { WorkerThreadProcess } from "./worker_browser.js";
 import { WorkerThreadProcessError } from "./worker_browser_err.js";
+import { WorkerThreadProcess } from "./worker_browser.js";
 
-import { logger } from "./Logger.js";
+import { logger } from "../Logger.js";
 import queue from "queue";
 import { TaskRequestDTO } from "./TaskDTO/TaskRequestDTO";
 import { SupportedBrowserType } from "./TaskDTO/SupportedBrowerType.js";
@@ -20,24 +20,25 @@ export class Scheduler {
 		this.completedResp = [];
 		this.errorHandlerMap = GenErrorHandlerMap();
 
-		this.initTask();
+		// this.initTask();
 	}
 	private workerThreadsMap: Map<number, Worker> = new Map<number, Worker>();
 	private workerThreadsTaskMap: Map<number, TaskRequestDTO | undefined> =
 		new Map<number, TaskRequestDTO>();
 
 	public static resolveWorkerFilePath() {
-		const workerFp = WorkerThreadProcessError.getFileAbsolutePath();
+		const workerFp = WorkerThreadProcess.getFileAbsolutePath();
 		let re = new RegExp("/src/.*", "i");
 		const resolvedFpArray = re.exec(workerFp);
 		const rawFp = resolvedFpArray![0];
 		const outDir = "out";
 		const resolvedPath = `./${outDir}${rawFp}`;
-		logger.info(resolvedPath);
+		logger.info(`Worker detected in ${resolvedPath}`);
+
 		return resolvedPath;
 	}
 	public initTask() {
-		const externalRef = [1, 4, 5, 7, 99];
+		const externalRef = [1, 4, 5];
 		for (let taskNum = 0; taskNum < externalRef.length; taskNum++) {
 			const taskDetail = externalRef[taskNum];
 			const workReq: TaskRequestDTO = {
@@ -46,8 +47,11 @@ export class Scheduler {
 			};
 			this.taskQueue.push(workReq);
 		}
+		logger.error("Empty init task");
 	}
 	public startWorker() {
+		this.initTask();
+
 		while (this.taskQueue.length > 0) {
 			const req = this.taskQueue.shift();
 
@@ -89,8 +93,8 @@ export class Scheduler {
 	}
 }
 
-if (isMainThread) {
-	logger.info("starts");
-	const scheduler = new Scheduler();
-	scheduler.startWorker();
-}
+// if (isMainThread) {
+// 	logger.info("starts");
+// 	const scheduler = new Scheduler();
+// 	scheduler.startWorker();
+// }

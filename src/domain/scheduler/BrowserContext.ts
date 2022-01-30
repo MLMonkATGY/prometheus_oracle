@@ -18,7 +18,7 @@ export class BrowserWorker {
 	}
 	public static async build(browserType: SupportedBrowserType) {
 		let browser: Browser | null = null;
-		const launchSettings = { headless: true };
+		const launchSettings = { headless: false };
 		switch (browserType) {
 			case SupportedBrowserType.Chromium:
 				browser = await chromium.launch(launchSettings);
@@ -38,7 +38,7 @@ export class BrowserWorker {
 }
 export class BrowserContextWorker {
 	private device: typeof pDevices["Desktop Chrome"];
-	private browserContext: BrowserContext;
+	public browserContext: BrowserContext;
 	constructor(
 		browserContext: BrowserContext,
 		device: typeof pDevices["Desktop Chrome"] = pDevices["Desktop Chrome"]

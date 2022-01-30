@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import ContentFormat from "../src/domain/ContentFormat.enum.js";
 import { ConnectionManager } from "../src/repo/postgres/ConnectionManager.js";
 import JobPostRaw from "../src/repo/table/JobPostRaw.js";
+import JobStreet from "../src/repo/table/JobStreet.js";
 // test("test connection ", async ({ page }) => {
 // 	const conn = await ConnectionManager();
 // 	expect(conn).toBeDefined();
@@ -160,6 +161,33 @@ const getRawContent = () => {
 test("test add find ", async ({ page }) => {
 	const em = await ConnectionManager(true);
 	const recordNumBefore = await em.count(JobPostRaw, {});
+
+	const portalUrl = "https://www.jobstreet.com.my";
+	const postUrl =
+		"https://www.jobstreet.com.my/en/job/machine-learning-engineer-44191-4787146?jobId=jobstreet-my-job-4787146&sectionRank=1&token=0~d132bd46-81a6-42e2-9963-0884613bc971&fr=SRP%20View%20In%20New%20Tab";
+	const version = 1;
+	const rawContent = getRawContent();
+	const rawContentType = ContentFormat.JSON;
+	const payload = new JobPostRaw(
+		portalUrl,
+		postUrl,
+		version,
+		rawContent,
+		rawContentType
+	);
+	em.persist(payload);
+	await em.flush();
+	const recordNumAfter = await em.count(JobPostRaw, {});
+
+	expect(recordNumAfter).toBe(recordNumBefore + 1);
+	const inserted = await em.findOneOrFail(JobPostRaw, { id: payload.id });
+	expect(inserted.companyName).not.toBeDefined();
+	expect(inserted.portalUrl).toBe(portalUrl);
+});
+
+test.only("test jobStreeet table", async ({ page }) => {
+	const em = await ConnectionManager(true);
+	const recordNumBefore = await em.count(JobStreet, {});
 
 	const portalUrl = "https://www.jobstreet.com.my";
 	const postUrl =
