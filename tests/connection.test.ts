@@ -2,7 +2,9 @@ import { test, expect } from "@playwright/test";
 import ContentFormat from "../src/domain/ContentFormat.enum.js";
 import { ConnectionManager } from "../src/repo/postgres/ConnectionManager.js";
 import JobPostRaw from "../src/repo/table/JobPostRaw.js";
-test.only("test connection ", async ({ page }) => {
+import JobStreetTable from "../src/repo/table/JobStreetTable.js";
+
+test("test connection ", async ({ page }) => {
 	const conn = await ConnectionManager();
 	expect(conn).toBeDefined();
 });
@@ -182,4 +184,62 @@ test("test add find ", async ({ page }) => {
 	const inserted = await em.findOneOrFail(JobPostRaw, { id: payload.id });
 	expect(inserted.companyName).not.toBeDefined();
 	expect(inserted.portalUrl).toBe(portalUrl);
+});
+
+test("test jobStreeet table", async ({ page }) => {
+	const em = await ConnectionManager(true);
+	const recordNumBefore = await em.count(JobStreetTable, {});
+
+	const location = "QQS";
+	const jobName = "QQS";
+	const companyName = "asd";
+	const Overview = "asdasd";
+	const companySize = "asd";
+	const benefits = "asd";
+	const averageProcessingTime = "asd";
+	const industryType = "asd";
+	const jobDescription = "asd";
+	const careerLevel = "asd";
+	const qualification = "asd";
+	const yearsOfExperience = "asd";
+	const jobType = "asd";
+	const jobSpecializations = "asd";
+	const salary = "asd";
+	const contentFormat = ContentFormat.JSON;
+	const url = "asd";
+	const postedTime = new Date();
+
+	const version = 1;
+	const rawContent = "asd";
+	const rawContentType = ContentFormat.JSON;
+	const payload = new JobStreetTable(
+		jobName,
+		companyName,
+		Overview,
+		companySize,
+		location,
+		benefits,
+		averageProcessingTime,
+		industryType,
+		jobDescription,
+		careerLevel,
+		qualification,
+		yearsOfExperience,
+		jobType,
+		jobSpecializations,
+		salary,
+		contentFormat,
+		rawContent,
+		url,
+		version,
+		postedTime
+	);
+	em.persist(payload);
+	await em.flush();
+	const recordNumAfter = await em.count(JobStreetTable, {});
+
+	expect(recordNumAfter).toBe(recordNumBefore + 1);
+	const inserted = await em.findOneOrFail(JobStreetTable, { id: payload.id });
+	expect(payload.url).toBe(inserted.url);
+	expect(payload.jobName).toBe(inserted.jobName);
 });
