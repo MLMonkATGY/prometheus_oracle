@@ -2,11 +2,12 @@ import { test, expect } from "@playwright/test";
 import ContentFormat from "../src/domain/ContentFormat.enum.js";
 import { ConnectionManager } from "../src/repo/postgres/ConnectionManager.js";
 import JobPostRaw from "../src/repo/table/JobPostRaw.js";
-import JobStreet from "../src/repo/table/JobStreet.js";
-// test("test connection ", async ({ page }) => {
-// 	const conn = await ConnectionManager();
-// 	expect(conn).toBeDefined();
-// });
+import JobStreetTable from "../src/repo/table/JobStreetTable.js";
+
+test("test connection ", async ({ page }) => {
+	const conn = await ConnectionManager();
+	expect(conn).toBeDefined();
+});
 const getRawContent = () => {
 	const rawContent = `		
 	{
@@ -185,29 +186,60 @@ test("test add find ", async ({ page }) => {
 	expect(inserted.portalUrl).toBe(portalUrl);
 });
 
-test.only("test jobStreeet table", async ({ page }) => {
+test("test jobStreeet table", async ({ page }) => {
 	const em = await ConnectionManager(true);
-	const recordNumBefore = await em.count(JobStreet, {});
+	const recordNumBefore = await em.count(JobStreetTable, {});
 
-	const portalUrl = "https://www.jobstreet.com.my";
-	const postUrl =
-		"https://www.jobstreet.com.my/en/job/machine-learning-engineer-44191-4787146?jobId=jobstreet-my-job-4787146&sectionRank=1&token=0~d132bd46-81a6-42e2-9963-0884613bc971&fr=SRP%20View%20In%20New%20Tab";
+	const location = "QQS";
+	const jobName = "QQS";
+	const companyName = "asd";
+	const Overview = "asdasd";
+	const companySize = "asd";
+	const benefits = "asd";
+	const averageProcessingTime = "asd";
+	const industryType = "asd";
+	const jobDescription = "asd";
+	const careerLevel = "asd";
+	const qualification = "asd";
+	const yearsOfExperience = "asd";
+	const jobType = "asd";
+	const jobSpecializations = "asd";
+	const salary = "asd";
+	const contentFormat = ContentFormat.JSON;
+	const url = "asd";
+	const postedTime = new Date();
+
 	const version = 1;
-	const rawContent = getRawContent();
+	const rawContent = "asd";
 	const rawContentType = ContentFormat.JSON;
-	const payload = new JobPostRaw(
-		portalUrl,
-		postUrl,
-		version,
+	const payload = new JobStreetTable(
+		jobName,
+		companyName,
+		Overview,
+		companySize,
+		location,
+		benefits,
+		averageProcessingTime,
+		industryType,
+		jobDescription,
+		careerLevel,
+		qualification,
+		yearsOfExperience,
+		jobType,
+		jobSpecializations,
+		salary,
+		contentFormat,
 		rawContent,
-		rawContentType
+		url,
+		version,
+		postedTime
 	);
 	em.persist(payload);
 	await em.flush();
-	const recordNumAfter = await em.count(JobPostRaw, {});
+	const recordNumAfter = await em.count(JobStreetTable, {});
 
 	expect(recordNumAfter).toBe(recordNumBefore + 1);
-	const inserted = await em.findOneOrFail(JobPostRaw, { id: payload.id });
-	expect(inserted.companyName).not.toBeDefined();
-	expect(inserted.portalUrl).toBe(portalUrl);
+	const inserted = await em.findOneOrFail(JobStreetTable, { id: payload.id });
+	expect(payload.url).toBe(inserted.url);
+	expect(payload.jobName).toBe(inserted.jobName);
 });

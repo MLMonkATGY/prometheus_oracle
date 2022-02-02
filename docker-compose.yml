@@ -20,10 +20,17 @@ services:
       - POSTGRES_USER=oracle_alextay
       - POSTGRES_PASSWORD=oracle_alextay
       - POSTGRES_DB=prometheus_oracle
+    ports:
+      - "5432:5432"
     expose:
       - 5432
-    container_name: prometheus_oracle_postgres
-
+    conta
+      - "15432:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=postgres@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+    depends_on:
+      - postgresdb
 volumes:
   prometheus_oracle_postgres:
 

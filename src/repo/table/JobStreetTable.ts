@@ -8,7 +8,7 @@ import {
 } from "@mikro-orm/core";
 import ContentFormat from "../../domain/ContentFormat.enum.js";
 @Entity()
-class JobStreet {
+class JobStreetTable {
 	@PrimaryKey()
 	id!: number;
 	@Property({ nullable: false })
@@ -16,7 +16,7 @@ class JobStreet {
 	@Property({ nullable: false })
 	companyName!: string;
 	@Property({ nullable: false })
-	companyOverview!: string;
+	Overview!: string;
 	@Property({ nullable: true })
 	companySize!: string;
 	@Property({ nullable: false })
@@ -49,7 +49,7 @@ class JobStreet {
 	@Enum({ items: () => ContentFormat, nullable: false })
 	contentFormat!: ContentFormat;
 	@Property({ nullable: false })
-	postedTime: Date = new Date();
+	postedTime: Date;
 	@Property()
 	createdAt: Date = new Date();
 	@Property({ onUpdate: () => new Date() })
@@ -58,10 +58,9 @@ class JobStreet {
 	version!: number;
 
 	constructor(
-		id: number,
 		jobName: string,
 		companyName: string,
-		companyOverview: string,
+		Overview: string,
 		companySize: string,
 		location: string,
 		benefits: string,
@@ -77,12 +76,12 @@ class JobStreet {
 		contentFormat: ContentFormat,
 		rawContent: string,
 		url: string,
-		version: number
+		version: number,
+		postedTime: Date
 	) {
-		this.id = id;
 		this.jobName = jobName;
 		this.companyName = companyName;
-		this.companyOverview = companyOverview;
+		this.Overview = Overview;
 		this.companySize = companySize;
 		this.location = location;
 		this.benefits = benefits;
@@ -99,6 +98,7 @@ class JobStreet {
 		this.url = url;
 		this.rawContent = rawContent;
 		this.version = version;
+		this.postedTime = postedTime;
 	}
 }
-export default JobStreet;
+export default JobStreetTable;
