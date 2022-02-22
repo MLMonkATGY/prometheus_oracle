@@ -37,7 +37,7 @@ export class JobStreetCrawler{
 		elements.map((el) => el.href)
 			);
 		const targetUrls= this.func1(allUrls);
-		const rndInt=JobStreetCrawler.randomIntFromInterval(3000,4000);
+		const rndInt=JobStreetCrawler.randomIntFromInterval(1000,3000);
 
 			for (let cat = 0; cat < targetUrls.length; cat++) {
 				
@@ -50,7 +50,6 @@ export class JobStreetCrawler{
 				
 				});
 				const content_l="#contentContainer";
-				const recordNumBefore = await em.count(JobPostRaw, {});
 
 				const version = 1;
 				const portalUrl = "https://www.jobstreet.com.my";
@@ -65,12 +64,6 @@ export class JobStreetCrawler{
 				);
 				em.persist(payload);
 				await em.flush();
-
-				const recordNumAfter = await em.count(JobPostRaw, {});
-				expect(recordNumAfter).toBe(recordNumBefore + 1);
-				const inserted = await em.findOneOrFail(JobPostRaw, { id: payload.id });
-				expect(inserted.portalUrl).toBe(portalUrl);
-
 			}
 				const part2Url = cont_page.toString();
 				const finalUrl = part1Url.concat(part2Url);
