@@ -16,7 +16,7 @@ class JobStreetTable {
 	@Property({ nullable: false })
 	companyName!: string;
 	@Property({ nullable: false })
-	Overview!: string;
+	companyOverview!: string;
 	@Property({ nullable: true })
 	companySize!: string;
 	@Property({ nullable: false })
@@ -37,19 +37,15 @@ class JobStreetTable {
 	yearsOfExperience?: string;
 	@Property({ nullable: true })
 	jobType?: string;
-	@Property({ nullable: true })
-	jobSpecializations?: string;
+	@Property({ nullable: false })
+	jobSpecializations!: string;
 	@Property({ nullable: true })
 	salary?: string;
-	@Property({ nullable: true })
-	url?: string;
-
-	@Property({ columnType: "text", nullable: false })
-	rawContent!: string;
-	@Enum({ items: () => ContentFormat, nullable: false })
-	contentFormat!: ContentFormat;
 	@Property({ nullable: false })
-	postedTime: Date;
+	url!: string;
+
+	@Property({ nullable: false })
+	postedTime: string;
 	@Property()
 	createdAt: Date = new Date();
 	@Property({ onUpdate: () => new Date() })
@@ -60,7 +56,7 @@ class JobStreetTable {
 	constructor(
 		jobName: string,
 		companyName: string,
-		Overview: string,
+		companyOverview: string,
 		companySize: string,
 		location: string,
 		benefits: string,
@@ -73,15 +69,13 @@ class JobStreetTable {
 		jobType: string,
 		jobSpecializations: string,
 		salary: string,
-		contentFormat: ContentFormat,
-		rawContent: string,
 		url: string,
 		version: number,
-		postedTime: Date
+		postedTime: string
 	) {
 		this.jobName = jobName;
 		this.companyName = companyName;
-		this.Overview = Overview;
+		this.companyOverview = companyOverview;
 		this.companySize = companySize;
 		this.location = location;
 		this.benefits = benefits;
@@ -94,9 +88,7 @@ class JobStreetTable {
 		this.jobType = jobType;
 		this.jobSpecializations = jobSpecializations;
 		this.salary = salary;
-		this.contentFormat = contentFormat;
 		this.url = url;
-		this.rawContent = rawContent;
 		this.version = version;
 		this.postedTime = postedTime;
 	}

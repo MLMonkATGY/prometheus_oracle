@@ -70,25 +70,25 @@ const getPostedTime=(time:string)=>{
 test.only("process job street", async ({ page }) => {
 	getAllFromJobPostRow()
 
-	// const ptime=getPostedTime("Posted on 11-Feb-22")
-// 	const temp = contentCat({
-// 	url: "",
-// 	jobName: "",
-// 	company: "",
-// 	location: "",
-// 	postTime: "",
-// 	qualification: "",
-// 	jobType: "",
-// 	jobSpecializations: "",
-// 	companyOverview: "",
-// 	companySize: "",
-// 	industry: "",
-// 	benefits: "",
-// 	jobDescription: "",
-// 	version: 1,
-// 	postedTime: ptime
-// })
-// console.log(temp)
+	const ptime=getPostedTime("Posted on 11-Feb-22")
+	const temp = contentCat({
+	url: "",
+	jobName: "",
+	company: "",
+	location: "",
+	postTime: "",
+	qualification: "",
+	jobType: "",
+	jobSpecializations: "",
+	companyOverview: "",
+	companySize: "",
+	industry: "",
+	benefits: "",
+	jobDescription: "",
+	version: 1,
+	postedTime: ptime
+})
+console.log(temp)
 });
 
 const getAllFromJobPostRow=async()=>{
