@@ -42,7 +42,7 @@ const runTest = async (page :Page)=>{
 		let pageNumElem=rawNumbers.split('\n');
 		// const lastPageNum = parseInt(pageNumElem[pageNumElem.length - 1])
 		const lastPageNum = 3
-		getAllUrl(lastPageNum,page);
+		await getAllUrl(lastPageNum,page);
 
 		// for (let cont_page = 2; cont_page < lastPageNum + 1; cont_page++) {
 		
@@ -109,7 +109,7 @@ const getAllUrl=async(lastPageNum: number,page:Page)=>{
 			);
 		const targetUrls = func1(allUrls);
 
-		getEachContent(targetUrls,page);
+		await getEachContent(targetUrls,page);
 		
 		const part1Url="https://www.jobstreet.com.my/en/job-search/computer-software-it-jobs-in-malaysia/";
 		const part2Url = cont_page.toString();
@@ -150,10 +150,11 @@ const getEachContent=async (targetUrls: string[],page:Page) => {
 			rawContents,
 			rawContentType
 		);
+		const recordNumBefore = await em.count(JobPostRaw, {});
+
 		em.persist(payload);
 		await em.flush();
 
-		const recordNumBefore = await em.count(JobPostRaw, {});
 		const recordNumAfter = await em.count(JobPostRaw, {});
 		expect(recordNumAfter).toBe(recordNumBefore + 1);
 		const inserted = await em.findOneOrFail(JobPostRaw, { id: payload.id });
@@ -162,7 +163,7 @@ const getEachContent=async (targetUrls: string[],page:Page) => {
 	}
 }
 
-test("basic test", async ({ page }) => {
+test.only("basic test", async ({ page }) => {
 	await runTest(page).catch(err=>{
 		console.log(err)
 	})
