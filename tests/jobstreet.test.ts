@@ -41,68 +41,14 @@ const runTest = async (page :Page)=>{
 		let rawNumbers = await page.locator("#pagination").innerText();
 		let pageNumElem=rawNumbers.split('\n');
 		// const lastPageNum = parseInt(pageNumElem[pageNumElem.length - 1])
-		const lastPageNum = 3
+		const lastPageNum = 1
 		await getAllUrl(lastPageNum,page);
 
-		// for (let cont_page = 2; cont_page < lastPageNum + 1; cont_page++) {
-		
-		// 	const allUrls = await page.$$eval("a", (elements) =>
-		// 	elements.map((el) => el.href)
-		// 		);
-		// 	const targetUrls = func1(allUrls);
-	
-		// 	// getEachContent(targetUrls,page);
-		// 	for (let cat = 0; cat < targetUrls.length; cat++) {
-		// 		const em = await ConnectionManager(true);
-		// 		const recordNumBefore = await em.count(JobPostRaw, {});
-
-		// 		const rndInt=randomIntFromInterval(2000,4000);
-		// 		await page.waitForTimeout(rndInt); 
-		// 		const postUrl = targetUrls[cat];
-		// 		await page.goto(postUrl).catch((err) => {
-		// 			console.log(err);
-		// 			fetchCode(postUrl,page);
-				
-		// 		});
-		// 		const content_l="#contentContainer";
-		
-		// 		const version = 1;
-		// 		const portalUrl = "https://www.jobstreet.com.my";
-		// 		const rawContents = await page.locator(content_l).innerText();
-		// 		const rawContentType=ContentFormat.TEXT;
-		// 		const payload = new JobPostRaw(
-		// 			portalUrl,
-		// 			postUrl,
-		// 			version,
-		// 			rawContents,
-		// 			rawContentType
-		// 		);
-		// 		em.persist(payload);
-		// 		await em.flush();
-		
-		// 		const recordNumAfter = await em.count(JobPostRaw, {});
-		// 		expect(recordNumAfter).toBe(recordNumBefore + 1);
-		// 		const inserted = await em.findOneOrFail(JobPostRaw, { id: payload.id });
-		// 		expect(inserted.portalUrl).toBe(portalUrl);
-		
-		// 	}
-			
-		// 	const part1Url="https://www.jobstreet.com.my/en/job-search/computer-software-it-jobs-in-malaysia/";
-		// 	const part2Url = cont_page.toString();
-		// 	const finalUrl = part1Url.concat(part2Url);
-		// 	// await page.waitForTimeout(rndInt); 
-		// 	await page.goto(finalUrl).catch((err) => {
-		// 		console.log(err);
-		// 		fetchCode(finalUrl,page);
-					
-		// 	});
-		// 	console.log(finalUrl);
-		// }
 }
 
 const getAllUrl=async(lastPageNum: number,page:Page)=>{
 
-	for (let cont_page = 2; cont_page < lastPageNum + 1; cont_page++) {
+	for (let cont_page = 1; cont_page < lastPageNum + 1; cont_page++) {
 		
 		const allUrls = await page.$$eval("a", (elements) =>
 		elements.map((el) => el.href)
