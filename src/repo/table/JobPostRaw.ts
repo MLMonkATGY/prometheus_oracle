@@ -13,7 +13,7 @@ class JobPostRaw {
 	id!: number;
 	@Property({ nullable: false })
 	portalUrl!: string;
-	@Property({ columnType: "text",nullable: false })
+	@Property({ columnType: "text", nullable: false })
 	postUrl!: string;
 	@Property({ nullable: true })
 	companyName?: string;
