@@ -6,7 +6,7 @@
 			"request": "launch",
 			"name": "Launch Program",
 			"skipFiles": ["<node_internals>/**"],
-			"program": "${workspaceFolder}/src/service/RunCrawler.ts",
+			"program": "${workspaceFolder}/src/service/jobstreet/StartCrawler.ts",
 			"outFiles": ["${workspaceFolder}/out/**/*.js"],
 			"preLaunchTask": "tsc: build - tsconfig.json",
 			"outputCapture": "std"

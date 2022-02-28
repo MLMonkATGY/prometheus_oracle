@@ -193,7 +193,7 @@ test("test jobStreeet table", async ({ page }) => {
 	const location = "QQS";
 	const jobName = "QQS";
 	const companyName = "asd";
-	const Overview = "asdasd";
+	const companyOverview = "asdasd";
 	const companySize = "asd";
 	const benefits = "asd";
 	const averageProcessingTime = "asd";
@@ -207,7 +207,7 @@ test("test jobStreeet table", async ({ page }) => {
 	const salary = "asd";
 	const contentFormat = ContentFormat.JSON;
 	const url = "asd";
-	const postedTime = new Date();
+	const postedTime = "sd";
 
 	const version = 1;
 	const rawContent = "asd";
@@ -215,7 +215,7 @@ test("test jobStreeet table", async ({ page }) => {
 	const payload = new JobStreetTable(
 		jobName,
 		companyName,
-		Overview,
+		companyOverview,
 		companySize,
 		location,
 		benefits,
@@ -228,8 +228,6 @@ test("test jobStreeet table", async ({ page }) => {
 		jobType,
 		jobSpecializations,
 		salary,
-		contentFormat,
-		rawContent,
 		url,
 		version,
 		postedTime
@@ -237,7 +235,6 @@ test("test jobStreeet table", async ({ page }) => {
 	em.persist(payload);
 	await em.flush();
 	const recordNumAfter = await em.count(JobStreetTable, {});
-
 	expect(recordNumAfter).toBe(recordNumBefore + 1);
 	const inserted = await em.findOneOrFail(JobStreetTable, { id: payload.id });
 	expect(payload.url).toBe(inserted.url);

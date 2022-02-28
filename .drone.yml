@@ -10,7 +10,7 @@ steps:
       - git checkout $DRONE_COMMIT
       - cd prometheus_oracle
       - npm ci
-      - npm test
+      - npm run test
 
 services:
   - name: prometheus_oracle_postgres

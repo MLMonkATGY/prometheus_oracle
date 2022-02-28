@@ -10,11 +10,11 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/home/alextay96/Desktop/workspace/prometheus_oracle/test-results",
+        "outputDir": "/home/alextay96/geeyong/prometheus_oracle/test-results",
         "repeatEach": 1,
         "retries": 0,
         "name": "",
-        "testDir": "/home/alextay96/Desktop/workspace/prometheus_oracle/out",
+        "testDir": "/home/alextay96/geeyong/prometheus_oracle/out",
         "testIgnore": [],
         "testMatch": [
           "**/?(*.)@(spec|test).@(ts|js|mjs)"
@@ -38,24 +38,24 @@
       "max": 5,
       "threshold": 15000
     },
-    "rootDir": "/home/alextay96/Desktop/workspace/prometheus_oracle/out",
+    "rootDir": "/home/alextay96/geeyong/prometheus_oracle/out",
     "quiet": false,
     "shard": null,
     "updateSnapshots": "missing",
     "version": "1.17.2",
     "workers": 3,
     "webServer": null,
-    "__testGroupsCount": 1
+    "__testGroupsCount": 2
   },
   "suites": [
     {
-      "title": "tests/connection.test.js",
-      "file": "tests/connection.test.js",
+      "title": "tests/jobstreet.test.js",
+      "file": "tests/jobstreet.test.js",
       "line": 0,
       "column": 0,
       "specs": [
         {
-          "title": "test jobStreeet table",
+          "title": "basic test",
           "ok": true,
           "tags": [],
           "tests": [
@@ -67,20 +67,20 @@
               "results": [
                 {
                   "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 59038,
+                  "status": "skipped",
+                  "duration": 26679,
                   "stdout": [
                     {
                       "text": "\u001b[90m[discovery] \u001b[39mORM entity discovery started, using \u001b[36mReflectMetadataProvider\u001b[39m\n"
                     },
                     {
-                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobStreet\u001b[39m\n"
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobStreetTable\u001b[39m\n"
                     },
                     {
                       "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobPostRaw\u001b[39m\n"
                     },
                     {
-                      "text": "\u001b[90m[discovery] \u001b[39m- entity discovery finished, found \u001b[32m2\u001b[39m entities, took \u001b[32m19 ms\u001b[39m\n"
+                      "text": "\u001b[90m[discovery] \u001b[39m- entity discovery finished, found \u001b[32m2\u001b[39m entities, took \u001b[32m18 ms\u001b[39m\n"
                     },
                     {
                       "text": "\u001b[90m[info] \u001b[39mMikroORM successfully connected to database \u001b[32mprometheus_oracle on postgresql://oracle_alextay:*****@172.78.0.44:5432\u001b[39m\n"
@@ -95,28 +95,263 @@
                       "text": "\u001b[90m[query] \u001b[39mset session_replication_role = 'replica';\u001b[90m [took 1 ms]\u001b[39m\n"
                     },
                     {
-                      "text": "\u001b[90m[query] \u001b[39mcreate table \"job_post_raw\" (\"id\" serial primary key, \"portal_url\" varchar(255) not null, \"post_url\" varchar(255) not null, \"company_name\" varchar(255) null, \"company_url\" varchar(255) null, \"raw_content\" text not null, \"content_format\" int2 not null, \"created_at\" timestamptz(0) not null, \"updated_at\" timestamptz(0) not null, \"version\" int4 not null default 1);\u001b[90m [took 11 ms]\u001b[39m\n"
+                      "text": "\u001b[90m[query] \u001b[39m\u001b[31mcreate table \"job_post_raw\" (\"id\" serial primary key, \"portal_url\" varchar(255) not null, \"post_url\" text not null, \"company_name\" varchar(255) null, \"company_url\" varchar(255) null, \"raw_content\" text not null, \"content_format\" int2 not null, \"created_at\" timestamptz(0) not null, \"updated_at\" timestamptz(0) not null, \"version\" int4 not null default 1);\u001b[39m\u001b[90m [took 2 ms]\u001b[39m\n"
                     },
                     {
-                      "text": "\u001b[90m[query] \u001b[39mcreate table \"job_street\" (\"id\" serial primary key, \"job_name\" varchar(255) not null, \"company_name\" varchar(255) not null, \"company_overview\" varchar(255) not null, \"company_size\" varchar(255) null, \"location\" varchar(255) not null, \"benefits\" varchar(255) null, \"average_processing_time\" varchar(255) null, \"industry_type\" varchar(255) not null, \"job_description\" varchar(255) not null, \"career_level\" varchar(255) null, \"qualification\" varchar(255) not null, \"years_of_experience\" varchar(255) null, \"job_type\" varchar(255) null, \"job_specializations\" varchar(255) null, \"salary\" varchar(255) null, \"url\" varchar(255) null, \"raw_content\" text not null, \"content_format\" int2 not null, \"posted_time\" timestamptz(0) not null, \"created_at\" timestamptz(0) not null, \"updated_at\" timestamptz(0) not null, \"version\" int4 not null default 1);\u001b[90m [took 11 ms]\u001b[39m\n"
+                      "text": "Relations already exist. Skip creation.\n"
                     },
                     {
-                      "text": "\u001b[90m[query] \u001b[39mset session_replication_role = 'origin';\u001b[90m [took 2 ms]\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_street\" as \"e0\"\u001b[90m [took 2 ms]\u001b[39m\n"
+                      "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_post_raw\" as \"e0\"\u001b[90m [took 3 ms]\u001b[39m\n"
                     },
                     {
                       "text": "\u001b[90m[query] \u001b[39mbegin\n"
                     },
                     {
-                      "text": "\u001b[90m[query] \u001b[39minsert into \"job_post_raw\" (\"company_name\", \"company_url\", \"content_format\", \"created_at\", \"portal_url\", \"post_url\", \"raw_content\", \"updated_at\") values (NULL, NULL, 1, '2022-01-30T08:21:06.292Z', 'https://www.jobstreet.com.my', 'https://www.jobstreet.com.my/en/job/machine-learning-engineer-44191-4787146?jobId=jobstreet-my-job-4787146&sectionRank=1&token=0~d132bd46-81a6-42e2-9963-0884613bc971&fr=SRP%20View%20In%20New%20Tab', '\t\t\t{\t\t\"props\": {\t\t\t\"pageProps\": {\t\t\t\t\"id\": \"jobs-malaysia-claritas-consulting-asia-job-software-developer-consultant-net\",\t\t\t\t\"job\": {\t\t\t\t\t\"id\": \"0dd55ecf-1c63-4a63-9505-764878d32008\",\t\t\t\t\t\"title\": \"Software Developer Consultant (.NET)\",\t\t\t\t\t\"image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/job_images/0dd55ecf-1c63-4a63-9505-764878d32008/jobs-malaysia-software-developer-consultant-net-claritas-consulting-asia-1641436691_show.jpg\",\t\t\t\t\t\"image_thumb\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/job_images/0dd55ecf-1c63-4a63-9505-764878d32008/jobs-malaysia-software-developer-consultant-net-claritas-consulting-asia-1641436691_show.jpg\",\t\t\t\t\t\"image_mobile\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/job_images/0dd55ecf-1c63-4a63-9505-764878d32008/jobs-malaysia-software-developer-consultant-net-claritas-consulting-asia-1641436691_show.jpg\",\t\t\t\t\t\"image_position\": \"0px 0px\",\t\t\t\t\t\"image_size\": null,\t\t\t\t\t\"job_type\": \"Full-Time\",\t\t\t\t\t\"tracks\": [{ \"id\": \"32\", \"title\": \"IT - Software Development\" }],\t\t\t\t\t\"track_id\": null,\t\t\t\t\t\"state_region\": \"Selangor\",\t\t\t\t\t\"location\": \"Jaya One / Petaling Jaya\",\t\t\t\t\t\"description\": \"<div>You will work in a software consulting team to build and support Claritas suites of business software on CRM, eCommerce &amp; Analytics. You will get to involved in technology on cloud, big data and AI. This is an opportunity for you to work in a dynamic environment where you must take pride in module ownership and passionate in continuous improvement.<br><br><strong>Job Responsibilities</strong></div><ul><li><!--block-->Develop robust, reliable &amp; high traffic business application (backend, frontend, mobile).</li><li><!--block-->Maintain and constantly optimize system, process and user experience of business application.</li><li><!--block-->Build, deploy and support custom portals and/or micro sites.</li><li><!--block-->Work closely with customers and various department on product improvement.</li></ul>\",\t\t\t\t\t\"short_description\": \"You will work in a software consulting team to build and support Claritas suites of business software on CRM, eCommerce & Analytics.\",\t\t\t\t\t\"requirements\": \"<ul><li>At least 1 year web and/or mobile programming experience.</li><li><!--block-->Must possess at least a professional certificate, degree or diploma in Computer Science, Software Engineering or equivalent.</li><li><!--block-->Experience and knowledge in .NET technology stack.</li><li><!--block-->Must have good coding, analytical and problem solving skills.</li><li><!--block-->Passionate &amp; take pride in module ownership; and always look to continuous improvement.</li><li><!--block-->Demonstrate passion in latest technology and keeping up with industry trends.</li><li><!--block-->Knowledge in MVC software application architecture is an added advantage.</li><li><!--block-->Good understanding of mobile app technology is an added advantage.</li></ul>\",\t\t\t\t\t\"bookmark\": false,\t\t\t\t\t\"have_applied\": false,\t\t\t\t\t\"have_rejected\": false,\t\t\t\t\t\"created_at\": \"2022-01-06 10:38:11 +0800\",\t\t\t\t\t\"salary\": \"RM3500 - RM7000\",\t\t\t\t\t\"expired\": false,\t\t\t\t\t\"boosted\": true,\t\t\t\t\t\"slug\": \"jobs-malaysia-claritas-consulting-asia-job-software-developer-consultant-net\",\t\t\t\t\t\"active\": true,\t\t\t\t\t\"external_job_url\": \"\",\t\t\t\t\t\"secondary_company_id\": null,\t\t\t\t\t\"company\": {\t\t\t\t\t\t\"id\": \"b3bd6286-6bac-4d0e-a42c-c0081583b952\",\t\t\t\t\t\t\"name\": \"Claritas Consulting Asia\",\t\t\t\t\t\t\"register_name\": \"Claritas Consulting (Asia) Sdn Bhd\",\t\t\t\t\t\t\"type_id\": 3,\t\t\t\t\t\t\"industry\": \"Technology-Software\",\t\t\t\t\t\t\"logo\": \"//s3.ap-southeast-1.amazonaws.com/resources.wobbjobs.com/uploads/company-logo/company_logo_image/b3bd6286-6bac-4d0e-a42c-c0081583b952/claritas-consulting-asia-1618394431.PNG\",\t\t\t\t\t\t\"short_description\": \"Claritas is a enterprise cloud computing company focus on customer relationship management (CRM) and call center solutions.\",\t\t\t\t\t\t\"cover_image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25640/jobs-malaysia-claritas-consulting-asia-1618502154_show.jpg\",\t\t\t\t\t\t\"cover_image_thumb\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25640/jobs-malaysia-claritas-consulting-asia-1618502154_thumb.jpg\",\t\t\t\t\t\t\"job_count\": 2,\t\t\t\t\t\t\"bookmark\": false,\t\t\t\t\t\t\"slug\": \"claritas-consulting-asia\",\t\t\t\t\t\t\"benefits\": [\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\"title\": \"Happiness = Productivity\",\t\t\t\t\t\t\t\t\"description\": \"Get paid to work & have fun with snacks! Additional benefits for you on office carpark, dental & optical subsidy.\",\t\t\t\t\t\t\t\t\"icon_code\": \"heart\"\t\t\t\t\t\t\t},\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\"title\": \"Flexi and Casual Everyday\",\t\t\t\t\t\t\t\t\"description\": \"Flexi and casual everyday - We are project-oriented and result driven.\r\",\t\t\t\t\t\t\t\t\"icon_code\": \"heart\"\t\t\t\t\t\t\t},\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\"title\": \"Insurance Coverage\",\t\t\t\t\t\t\t\t\"description\": \"Life + medical insurance coverage for confirmed staff - Your medical is taken care of.\r\",\t\t\t\t\t\t\t\t\"icon_code\": \"heart\"\t\t\t\t\t\t\t}\t\t\t\t\t\t],\t\t\t\t\t\t\"profile\": {\t\t\t\t\t\t\t\"address\": \"5.049, Block J, 129 Offices, 72A, Jln Profesor Diraja Ungku Aziz, 46200 Petaling Jaya, Selangor, Malaysia.\",\t\t\t\t\t\t\t\"latitude\": 3.1184035,\t\t\t\t\t\t\t\"longitude\": 101.6354371,\t\t\t\t\t\t\t\"descriptions\": [\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"title\": \"About Us\",\t\t\t\t\t\t\t\t\t\"body\": \"<div>Large enterprises are increasingly looking to cloud computing as a platform for the future. At Claritas, we are helping companies and brands around APAC region with strategies on how to leverage the power of cloud and AI. Claritas provides innovative cloud business platform for CRM, E-commerce &amp; Contact Center. As top 10 CRM technology provider, Claritas team has over 10 years of experience and serving 600+ customer success stories across South East Asia. Find out about our product suites at Claritascrm.com, Claritascommerce.com &amp; Claritascloud.com. We are expanding the team in Malaysia. This is a great opportunity for dynamic and passionate candidates to work with us on cutting edge technologies and enterprise projects around the region. Explore your career with us today!</div>\"\t\t\t\t\t\t\t\t},\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"title\": \"Why Us?\",\t\t\t\t\t\t\t\t\t\"body\": \"<ul><li>Happiness is new productivity -&nbsp; Get paid to work &amp; have fun with snacks all day long.</li><li>Life + medical insurance coverage for confirmed staff - Your medical is taken care of.</li><li>Flexi and casual everyday - We are project-oriented and result driven.</li><li>Additional benefits for you on office carpark, dental &amp; optical subsidy.</li></ul>\"\t\t\t\t\t\t\t\t}\t\t\t\t\t\t\t],\t\t\t\t\t\t\t\"images\": [\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"cover\": true,\t\t\t\t\t\t\t\t\t\"image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25640/jobs-malaysia-claritas-consulting-asia-1618502154_show.jpg\"\t\t\t\t\t\t\t\t},\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"cover\": false,\t\t\t\t\t\t\t\t\t\"image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25641/jobs-malaysia-claritas-consulting-asia-1618502670_show.jpg\"\t\t\t\t\t\t\t\t},\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"cover\": false,\t\t\t\t\t\t\t\t\t\"image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25642/jobs-malaysia-claritas-consulting-asia-1618502493_show.jpeg\"\t\t\t\t\t\t\t\t},\t\t\t\t\t\t\t\t{\t\t\t\t\t\t\t\t\t\"cover\": false,\t\t\t\t\t\t\t\t\t\"image\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/25643/jobs-malaysia-claritas-consulting-asia-1618502586_show.jpeg\"\t\t\t\t\t\t\t\t}\t\t\t\t\t\t\t],\t\t\t\t\t\t\t\"videos\": [],\t\t\t\t\t\t\t\"extras\": []\t\t\t\t\t\t}\t\t\t\t\t},\t\t\t\t\t\"image_sharing\": \"//resources.wobbjobs.com/resized/uploads/jobs-malaysia/job_images/0dd55ecf-1c63-4a63-9505-764878d32008/jobs-malaysia-software-developer-consultant-net-claritas-consulting-asia-1641436691_show.jpg\",\t\t\t\t\t\"structured_job_data\": {\t\t\t\t\t\t\"@context\": \"http://schema.org/\",\t\t\t\t\t\t\"@type\": \"JobPosting\",\t\t\t\t\t\t\"title\": \"Software Developer Consultant (.NET)\",\t\t\t\t\t\t\"description\": \"You will work in a software consulting team to build and support Claritas suites of business software on CRM, eCommerce and Analytics. You will get to involved in technology on cloud, big data and AI. This is an opportunity for you to work in a dynamic environment where you must take pride in module ownership and passionate in continuous improvement. Job Responsibilities -Develop robust, reliable and high traffic business application (backend, frontend, mobile). -Maintain and constantly optimize system, process and user experience of business application. -Build, deploy and support custom portals and/or micro sites. -Work closely with customers and various department on product improvement.\",\t\t\t\t\t\t\"datePosted\": \"2022-01-06\",\t\t\t\t\t\t\"hiringOrganization\": {\t\t\t\t\t\t\t\"@type\": \"Organization\",\t\t\t\t\t\t\t\"name\": \"Claritas Consulting Asia\",\t\t\t\t\t\t\t\"sameAs\": \"http://www.claritas.asia\",\t\t\t\t\t\t\t\"logo\": \"https://resources.wobbjobs.com/uploads/company-logo/company_logo_image/b3bd6286-6bac-4d0e-a42c-c0081583b952/claritas-consulting-asia-1618394431.PNG\"\t\t\t\t\t\t},\t\t\t\t\t\t\"validThrough\": \"2023-01-03T15:09:41+08:00\",\t\t\t\t\t\t\"baseSalary\": {\t\t\t\t\t\t\t\"@type\": \"MonetaryAmount\",\t\t\t\t\t\t\t\"currency\": \"MYR\",\t\t\t\t\t\t\t\"value\": {\t\t\t\t\t\t\t\t\"@type\": \"QuantitativeValue\",\t\t\t\t\t\t\t\t\"minValue\": 3500,\t\t\t\t\t\t\t\t\"maxValue\": 7000,\t\t\t\t\t\t\t\t\"unitText\": \"MONTH\"\t\t\t\t\t\t\t}\t\t\t\t\t\t},\t\t\t\t\t\t\"jobLocation\": {\t\t\t\t\t\t\t\"@type\": \"Place\",\t\t\t\t\t\t\t\"address\": {\t\t\t\t\t\t\t\t\"@type\": \"PostalAddress\",\t\t\t\t\t\t\t\t\"streetAddress\": \"C-31-1, Jalan Profesor Diraja Ungku Aziz\",\t\t\t\t\t\t\t\t\"addressLocality\": \"Petaling Jaya\",\t\t\t\t\t\t\t\t\"addressRegion\": \"Selangor\",\t\t\t\t\t\t\t\t\"postalCode\": \"46200\",\t\t\t\t\t\t\t\t\"addressCountry\": \"MY\"\t\t\t\t\t\t\t}\t\t\t\t\t\t},\t\t\t\t\t\t\"employmentType\": \"FULL_TIME\"\t\t\t\t\t}\t\t\t\t}\t\t\t},\t\t\t\"__N_SSG\": true\t\t},\t\t\"page\": \"/jobs/[id]\",\t\t\"query\": {\t\t\t\"id\": \"jobs-malaysia-claritas-consulting-asia-job-software-developer-consultant-net\"\t\t},\t\t\"buildId\": \"ApDBGaWCSvV7_EW0IBtKl\",\t\t\"isFallback\": false,\t\t\"gsp\": true,\t\t\"scriptLoader\": []\t}', '2022-01-30T08:21:06.292Z') returning \"id\", \"version\"\u001b[90m [took 1 ms]\u001b[39m\n"
+                      "text": "\u001b[90m[query] \u001b[39minsert into \"job_post_raw\" (\"company_name\", \"company_url\", \"content_format\", \"created_at\", \"portal_url\", \"post_url\", \"raw_content\", \"updated_at\") values (NULL, NULL, 3, '2022-02-22T01:14:13.736Z', 'https://www.jobstreet.com.my', 'https://www.jobstreet.com.my/en/job/software-developer-backend-4839576?jobId=jobstreet-my-job-4839576&sectionRank=1&token=0~8b0c0cf9-9f98-44f2-b1cd-2ca51971e038&fr=SRP%20View%20In%20New%20Tab', 'Software Developer (Backend)DZH International Sdn BhdKuala LumpurPosted 21 hours agoApply NowSoftware Developer (Backend)DZH International Sdn BhdApply NowJob HighlightsPerformance bonusMedical and insurance benefitsHybrid office & work from home arrangementsJob DescriptionOur company provides advance equity trading systems to majority of the financial broking firms in Singapore & Malaysia. Our clients also involve major international banks in Asia. We are looking for committed candidate to work closely with our dynamic software development team.Attractive remuneration & benefits for qualified candidates. Our office is at Bukit Bintang but due to current COVID-19 measures, we are working from home on a rotation basis. Candidates will need to have stable internet connection while working from home.The successful candidate will be responsible for working on projects which includes gathering and analyzing business requirements, translating client requests into system design and product enhancements.Job Requirements:Diploma / Degree in IT or equivalent2 years development experienceProgramming skills in C/C++, JavaGood working knowledge of SQL programming and Oracle, MySQLGood working knowledge of Object-oriented technologies, network, multi-threaded programming and general application designKnowledge and experience in UNIX system and multi-tier architecture is a plusKnowledge in Client-Server architecture is a plusExcellent problem solving and logical thinking skillsHigh commitment and ability to work under a fast-paced work environmentAble to work independently as well as contributing member of the teamAble to multi-task as well as be strategic, creative, innovative and dynamic, fast-paced and take on challengesAdditional InformationCareer LevelSenior ExecutiveQualificationDiploma, Advanced/Higher/Graduate Diploma, Bachelor''s Degree, Post Graduate Diploma, Professional DegreeYears of Experience2 yearsJob TypeFull-TimeJob SpecializationsComputer/Information Technology, IT-SoftwareCompany OverviewDZH International (DZHI) is Southeast Asia''s leading financial data provider offering an integrated consolidated suite of reliable market data, trading execution, in-depth news and analytical tools. As one of the leading pioneers of real-time online delivery of equity, futures and commodity market information, DZHl has developed a series of dynamic, user-friendly financial market data analytics products.DZHI specializes in creating customized trading solutions for the financial industry, offering the best-of-class trading experience with reliable access from any desktop operating system, web browser, iOS and Android mobile device. Featuring collaboration tools, DZHI delivers a powerful mix of real-time financial market data and trading execution features through its customizable filters and intuitively-presented platform that fulfills our clients’ trading needs anytime, anywhere.DZHI has been delivering unparalleled insights and trading solutions to the institutional and retail investment community for close to 20 years, our clients include major multinational banks and brokerages in Asia. DZHI is a 100% wholly-owned subsidiary of Shanghai DZH. Additional Company InformationRegistration No.574271-DCompany Size51 - 200 EmployeesAverage Processing Time26 daysIndustryComputer / Information Technology (Software)Benefits & OthersMedical, Regular hours, Mondays - Fridays, Casual (e.g. T-shirts), Annual Leave, Regular Staff Welfare Activities etcSpecific LocationBukit BintangMore jobs from this employerReport this job ad', '2022-02-22T01:14:13.736Z') returning \"id\", \"version\"\u001b[90m [took 2 ms]\u001b[39m\n"
                     },
                     {
                       "text": "\u001b[90m[query] \u001b[39mcommit\n"
                     },
                     {
                       "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_post_raw\" as \"e0\"\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39mORM entity discovery started, using \u001b[36mReflectMetadataProvider\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobStreetTable\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobPostRaw\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- entity discovery finished, found \u001b[32m2\u001b[39m entities, took \u001b[32m8 ms\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[info] \u001b[39mMikroORM successfully connected to database \u001b[32mprometheus_oracle on postgresql://oracle_alextay:*****@172.78.0.44:5432\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect 1 from pg_database where datname = 'prometheus_oracle'\u001b[90m [took 2 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mset names 'utf8';\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mset session_replication_role = 'replica';\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39m\u001b[31mcreate table \"job_post_raw\" (\"id\" serial primary key, \"portal_url\" varchar(255) not null, \"post_url\" text not null, \"company_name\" varchar(255) null, \"company_url\" varchar(255) null, \"raw_content\" text not null, \"content_format\" int2 not null, \"created_at\" timestamptz(0) not null, \"updated_at\" timestamptz(0) not null, \"version\" int4 not null default 1);\u001b[39m\u001b[90m [took 2 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "Relations already exist. Skip creation.\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_post_raw\" as \"e0\"\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mbegin\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39minsert into \"job_post_raw\" (\"company_name\", \"company_url\", \"content_format\", \"created_at\", \"portal_url\", \"post_url\", \"raw_content\", \"updated_at\") values (NULL, NULL, 3, '2022-02-22T01:14:18.048Z', 'https://www.jobstreet.com.my', 'https://www.jobstreet.com.my/en/job/software-developer-web-4808710?jobId=jobstreet-my-job-4808710&sectionRank=2&token=0~8b0c0cf9-9f98-44f2-b1cd-2ca51971e038&fr=SRP%20View%20In%20New%20Tab', 'Software Developer (Web)Asia-Pacific Broadcasting UnionKuala LumpurMYR 3,500 - MYR 5,900Posted 6 hours agoApply NowSoftware Developer (Web)Asia-Pacific Broadcasting UnionApply NowJob DescriptionThe person ABU is looking for will take the lead on behalf of the Working Group for the design and development of a media website focusing on video contents with functional components. The person will be responsible for the project, under the guidance of the Working Group, to its successful completion.SPECIFIC ACCOUNTABILITIESDesign, and development of the websiteConceptualize and create intuitive, engaging, and brand-consistent web experiences.Ensure complete, mobile responsive design for all device sizes with valid programming.Prepare and present web design and web structure to clientDevelop using WordPress content management system.Able to integrate with third party plugins and API (REST)Construct user guides and documentation, provide training to clientStay updated with emerging technologies/industry trends and apply them to operations and activities.REQUIREMENTSPrefer 3-5 years design experience in related field.Required skill(s): HTML5, CSS3, WordPress, jQuery, Adobe Photoshop, Adobe Illustrator, Multimedia software.Strong problem solving, great logic and analytical skills.Strong understanding of front-end and back-end website developmentExperience in designing Corporate Websites/Landing Pages with a mobile first approach.Up-to-date with the latest Web trends, techniques and technologies.Have a good understanding of SEO SEM, Google Ad principles.Responsible, positive attitude & self-driven.A good team player and able to work independently with minimal supervision.Organised person that can manage and deliver tasks on time, on target.A flexible approach and ability to adapt to dynamic changes.INTERESTED CANDIDATESPersonal CV, indicating all past experience from similar projects, as well as the contact details (email and telephone number) of the Candidate and at least three (3) professional references;Sample of previous work/ Portfolio (e.g. online or printed portfolios) should be submitted (or links provided) to support the application, and a list of recent websites where candidate was involved in the development process.Interested candidates must apply with a complete set of the above documents via email to recruitment[at]abu.org.my, no later than 4th February 2022.Additional InformationCareer LevelJunior ExecutiveQualificationProfessional Certificate, Diploma, Advanced/Higher/Graduate Diploma, Bachelor''s Degree, Post Graduate Diploma, Professional DegreeYears of Experience3 yearsJob TypeContractJob SpecializationsComputer/Information Technology, IT-SoftwareCompany OverviewThe Asia-Pacific Broadcasting Union (ABU) is an international professional association of broadcasting organisations with around 260 members located in 70 countries. It services these members from the ABU Secretariat, which is based in RTM’s Angkasapuri compound in Kuala Lumpur. The Secretariat employs some 40 staff led by senior experts in the technical, programming, news, sports and development projects fields. Additional Company InformationRegistration No.1737-07-WKLCompany Size1 - 50 EmployeesIndustryEntertainment / MediaBenefits & OthersMedical, Parking, Regular hours, Mondays - Fridays, Business (e.g. Shirts)Specific LocationAngkasapuriCompany photosMore jobs from this employerReport this job ad', '2022-02-22T01:14:18.048Z') returning \"id\", \"version\"\u001b[90m [took 2 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mcommit\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_post_raw\" as \"e0\"\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39mORM entity discovery started, using \u001b[36mReflectMetadataProvider\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobStreetTable\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobPostRaw\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- entity discovery finished, found \u001b[32m2\u001b[39m entities, took \u001b[32m7 ms\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[info] \u001b[39mMikroORM successfully connected to database \u001b[32mprometheus_oracle on postgresql://oracle_alextay:*****@172.78.0.44:5432\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect 1 from pg_database where datname = 'prometheus_oracle'\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mset names 'utf8';\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mset session_replication_role = 'replica';\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39m\u001b[31mcreate table \"job_post_raw\" (\"id\" serial primary key, \"portal_url\" varchar(255) not null, \"post_url\" text not null, \"company_name\" varchar(255) null, \"company_url\" varchar(255) null, \"raw_content\" text not null, \"content_format\" int2 not null, \"created_at\" timestamptz(0) not null, \"updated_at\" timestamptz(0) not null, \"version\" int4 not null default 1);\u001b[39m\u001b[90m [took 2 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "Relations already exist. Skip creation.\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_post_raw\" as \"e0\"\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mbegin\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39minsert into \"job_post_raw\" (\"company_name\", \"company_url\", \"content_format\", \"created_at\", \"portal_url\", \"post_url\", \"raw_content\", \"updated_at\") values (NULL, NULL, 3, '2022-02-22T01:14:22.676Z', 'https://www.jobstreet.com.my', 'https://www.jobstreet.com.my/en/job/software-web-developer-ruby-on-rails-4808518?jobId=jobstreet-my-job-4808518&sectionRank=3&token=0~8b0c0cf9-9f98-44f2-b1cd-2ca51971e038&fr=SRP%20View%20In%20New%20Tab', 'Software Web Developer (Ruby on Rails)RecruitopiaPetaling JayaPosted 6 hours agoApply NowSoftware Web Developer (Ruby on Rails)RecruitopiaApply NowJob HighlightsHybrid Working StyleInclusive, friendly and engaging work cultureOpportunities for InnovationJob DescriptionRecruitopia is a growing startup business and we are building the next generation of recruiting tools and on-demand recruiting services. We are defining the future of recruiting with an all-in-one innovative platform that aims to connect employers with the world’s largest network of recruiters. Recruitopia is on a mission to be a game changer in hiring solutions and becoming the future of recruitment.Currently, we are looking for a self-starter who is an innovative and critical thinker, detail oriented, proactive, effective communicator and a good team player. If you are the kind of person who is passionate about architecture and coding for web development, this is the right job for you!Job Responsibilities:Develop and design back-end web applications using Ruby on Rails.Create back-end APIs for front-end web applications.Responsible for development, testing, bug fixing, code refactoring and improving back-end application performance.Building clean and maintainable codes for projects involved.Contribute towards achieving the best optimized web application.Ensuring systems and processes are organized and working smoothly.Practice agile methodology of development and work towards continuous changes, innovation, improvement and implementation to achieve the best results.Work closely with the creative and development team to understand business requirements and provide suggestions on the feasibility of the web application designs and performance.Support team on other web development tasks.Perform other related duties as assigned.Requirements:As a Back End Web Developer, you will need:Minimum a degree in Computer Science, Information Technology, Software Engineering or similar field.In-depth knowledge in Ruby on Rails, Ruby, Rspec, Capybara, TDD, Haml, Sass, Javascript, Git, API. Experience building Ruby on Rails applications.Self-motivated team player, excellent communication and interpersonal skills.Innovative with the challenges in coding.Detail-oriented with the ability to capture error in coding.Able to understand and capture stakeholder’s viewpoint and provide suggestions on products/designs’ improvement.Keen in learning and seek for challenges.Junior and Senior roles available.Additional InformationCareer LevelJunior ExecutiveQualificationBachelor''s Degree, Post Graduate Diploma, Professional DegreeYears of Experience2 yearsJob TypeFull-TimeJob SpecializationsComputer/Information Technology, IT-SoftwareCompany OverviewRecruitopia is Malaysia''s first online recruitment marketplace, connecting employers and recruiters. Recruitopia aims to empower business owners and HR Professionals to work seamlessly with external recruiters to secure quality talents for your Company''s growth.We empower businesses to secure quality talent fast with the largest network of expert recruitment professionals and agencies. Unlike any other platform, our recruitment agency marketplace taps you into the largest network of specialist recruiters, ready to source candidates for your job positions. We provide recruitment agency management tools that enables employers to consolidate all third-party recruitment onto one platform to enjoy full visibility of hiring metrics, recruiters performance, simplify the payment process and increase your productivity.Additional Company InformationRegistration No.1411657-KCompany Size1 - 50 EmployeesIndustryComputer / Information Technology (Software)Benefits & OthersMedical, Sports (e.g. Gym), Regular hours, Mondays - Fridays, Business (e.g. Shirts)Specific LocationThe PinnacleMore jobs from this employerReport this job ad', '2022-02-22T01:14:22.676Z') returning \"id\", \"version\"\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mcommit\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_post_raw\" as \"e0\"\u001b[90m [took 2 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39mORM entity discovery started, using \u001b[36mReflectMetadataProvider\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobStreetTable\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobPostRaw\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- entity discovery finished, found \u001b[32m2\u001b[39m entities, took \u001b[32m5 ms\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[info] \u001b[39mMikroORM successfully connected to database \u001b[32mprometheus_oracle on postgresql://oracle_alextay:*****@172.78.0.44:5432\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect 1 from pg_database where datname = 'prometheus_oracle'\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mset names 'utf8';\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mset session_replication_role = 'replica';\u001b[90m [took 0 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39m\u001b[31mcreate table \"job_post_raw\" (\"id\" serial primary key, \"portal_url\" varchar(255) not null, \"post_url\" text not null, \"company_name\" varchar(255) null, \"company_url\" varchar(255) null, \"raw_content\" text not null, \"content_format\" int2 not null, \"created_at\" timestamptz(0) not null, \"updated_at\" timestamptz(0) not null, \"version\" int4 not null default 1);\u001b[39m\u001b[90m [took 3 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "Relations already exist. Skip creation.\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_post_raw\" as \"e0\"\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mbegin\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39minsert into \"job_post_raw\" (\"company_name\", \"company_url\", \"content_format\", \"created_at\", \"portal_url\", \"post_url\", \"raw_content\", \"updated_at\") values (NULL, NULL, 3, '2022-02-22T01:14:28.316Z', 'https://www.jobstreet.com.my', 'https://www.jobstreet.com.my/en/job/software-engineer-operations-9308425/origin/sg?jobId=jobstreet-sg-job-9308425&sectionRank=4&token=0~8b0c0cf9-9f98-44f2-b1cd-2ca51971e038&fr=SRP%20View%20In%20New%20Tab', 'Software Engineer (Operations)UFINITY Pte Ltd.SingaporePosted 19 hours agoApply NowSoftware Engineer (Operations)UFINITY Pte Ltd.Apply NowJob DescriptionRole is based in SingaporeResponsibilities:Provide professional technical support to the developed software program during the maintenance phase of the applications.Provide guidance to other Software Engineers in the team.Responsible for design, programming, debugging, testing, modifications, deployment, operations and maintenance of the applications.Ensure that the developed modules/deliverables meet expectation, quality standards and within schedule.Effectively documenting issues and providing regular status and progress towards project milestones.Requirements:Must possess at least a Bachelor’s Degree, Post Graduate Diploma or Professional Degree in Engineering (Computer/Telecommunication), Computer Science/Information Technology or equivalent.2-4 years hands on working experience with Java, J2EE, JSP, Tomcat, Apache HTTP, JavaScript, PostgreSQL, MySQL and Object Oriented analysis and design.Experienced in Internet technologies, application servers and databases.Experienced in UNIX environments, systems setup and application deployment will be advantage.Strong verbal and written communication skills, able to transmit information in a clear and unambiguous way.Problem-solving skills with high level of initiative.A team-player who takes ownership.Ability to work under pressure and meet tight deadlines.Ability to work individually with minimum supervision.Specific Requirements:Java, JSEE, SQL, HTML, JavaScriptCandidates with more years of relevant working experience will be considered for a Senior Software Engineer (Operations) role.Additional InformationCareer LevelJunior ExecutiveQualificationNot SpecifiedYears of Experience1 yearJob TypeFull-TimeJob SpecializationsComputer/Information Technology, IT-SoftwareCompany OverviewUfinity provides the industry''s most innovative and integrated business Information Technology (IT) systems for Asia''s leading enterprises, including large multinational groups, educational institutions and government ministries and agencies. We continue to be the driver of innovative solutions, delivering many industry''s firsts with exceptional value. Incorporated in 2001, Ufinity Pte Ltd is a highly successful IT solutions engineering company which specializes in the implementation of enterprise software and services. Today, the company employs more than 200 developers and engineers with strong expertise and experience in Custom Solutions Development, New Media and IT Security, especially in Identity Access Management. Our solution strategy provides our customers unmatched benefits from leading standard software and systems, including excellent system availability, scalability, process efficiency and powerful performance.  Brand Philosophy Our vision guides our business by identifying what we need to accomplish for sustainable, quality growth. Inspiring Vision Our vision guides our business by identifying what we need to accomplish for sustainable, quality growth.Achieving Pinnacle of Excellence that Wins Customer''s Trust and Drives Company Growth. Corporate Mission We achieve our pinnacle of excellence with: Domain insights backed by strong expertise Industry knowledge acquired through extensive experience Engineering excellence established by continuous improvement Customer intimacy achieved by understanding customer needs Technology leadership reinforced by innovation and alliances Values At Ufinity, we have some core values that drive us and makes us who we are.  We are proactive. We take initiative, pride, passion and drive in performing our work. We continuously improve ourselves. We believe that continuously improving and adapting ourselves will create the greatest value to our customers. We are solution focused. We analyse problems in a clear and organised manner and apply innovative and creative ideas towards the design and implementation of a solution. We believe in team work. We collaborate extensively and interact and exchange ideas and knowledge with each other regularly. The interactions generate far better ideas than an individual. We adopt a customer focus mentality. We  put  our  customers  first,  understand  their  expectations,  anticipate,  assess and respond in a timely manner to changing customer needs. We search out ways to enhance customer satisfaction by improving efficiency and effectiveness of service delivery. We constantly seek to achieve win-win situations. We believe in professionalism. We believe in being fair, trustworthy and accountable for our work. We respect others and ourselves.  Additional Company InformationRegistration No.200000177WCompany Size201 - 500 EmployeesAverage Processing Time21 daysIndustryComputer / Information Technology (Software)Benefits & OthersDental, Medical, Sports (e.g. Gym), Regular hours, Mondays - Fridays, variable bonuses, annual increment, book allowance, etc, Smart CasualMore jobs from this employerReport this job ad', '2022-02-22T01:14:28.316Z') returning \"id\", \"version\"\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mcommit\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect count(distinct(\"e0\".\"id\")) as \"count\" from \"job_post_raw\" as \"e0\"\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39mORM entity discovery started, using \u001b[36mReflectMetadataProvider\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobStreetTable\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobPostRaw\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- entity discovery finished, found \u001b[32m2\u001b[39m entities, took \u001b[32m5 ms\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[info] \u001b[39mMikroORM successfully connected to database \u001b[32mprometheus_oracle on postgresql://oracle_alextay:*****@172.78.0.44:5432\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect 1 from pg_database where datname = 'prometheus_oracle'\u001b[90m [took 2 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mset names 'utf8';\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mset session_replication_role = 'replica';\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39m\u001b[31mcreate table \"job_post_raw\" (\"id\" serial primary key, \"portal_url\" varchar(255) not null, \"post_url\" text not null, \"company_name\" varchar(255) null, \"company_url\" varchar(255) null, \"raw_content\" text not null, \"content_format\" int2 not null, \"created_at\" timestamptz(0) not null, \"updated_at\" timestamptz(0) not null, \"version\" int4 not null default 1);\u001b[39m\u001b[90m [took 2 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "Relations already exist. Skip creation.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "file": "tests/jobstreet.test.js",
+          "line": 125,
+          "column": 6
+        }
+      ]
+    },
+    {
+      "title": "tests/processjobstreet.test.js",
+      "file": "tests/processjobstreet.test.js",
+      "line": 0,
+      "column": 0,
+      "specs": [
+        {
+          "title": "process job street",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 0,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "passed",
+                  "duration": 725,
+                  "stdout": [
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39mORM entity discovery started, using \u001b[36mReflectMetadataProvider\u001b[39m\n"
+                    },
+                    {
+                      "text": "{\n  jobName: \u001b[32m''\u001b[39m,\n  company: \u001b[32m''\u001b[39m,\n  location: \u001b[32m''\u001b[39m,\n  salary: \u001b[32m''\u001b[39m,\n  postTime: \u001b[32m''\u001b[39m,\n  careerLevel: \u001b[32m''\u001b[39m,\n  qualification: \u001b[32m''\u001b[39m,\n  yearOfExperience: \u001b[32m''\u001b[39m,\n  jobType: \u001b[32m''\u001b[39m,\n  jobSpecializations: \u001b[32m''\u001b[39m,\n  companyOverview: \u001b[32m' '\u001b[39m,\n  companySize: \u001b[32m' '\u001b[39m,\n  averageProcessingTime: \u001b[32m' '\u001b[39m,\n  industry: \u001b[32m''\u001b[39m,\n  benefits: \u001b[32m''\u001b[39m,\n  jobDescription: \u001b[32m''\u001b[39m,\n  url: \u001b[32m''\u001b[39m,\n  version: \u001b[33m1\u001b[39m,\n  postedTime: \u001b[32m'11-Feb-22'\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobStreetTable\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobPostRaw\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[discovery] \u001b[39m- entity discovery finished, found \u001b[32m2\u001b[39m entities, took \u001b[32m23 ms\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[info] \u001b[39mMikroORM successfully connected to database \u001b[32mprometheus_oracle on postgresql://oracle_alextay:*****@172.78.0.44:5432\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect 1 from pg_database where datname = 'prometheus_oracle'\u001b[90m [took 2 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mset names 'utf8';\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mset session_replication_role = 'replica';\u001b[90m [took 1 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39m\u001b[31mcreate table \"job_post_raw\" (\"id\" serial primary key, \"portal_url\" varchar(255) not null, \"post_url\" text not null, \"company_name\" varchar(255) null, \"company_url\" varchar(255) null, \"raw_content\" text not null, \"content_format\" int2 not null, \"created_at\" timestamptz(0) not null, \"updated_at\" timestamptz(0) not null, \"version\" int4 not null default 1);\u001b[39m\u001b[90m [took 2 ms]\u001b[39m\n"
+                    },
+                    {
+                      "text": "Relations already exist. Skip creation.\n"
+                    },
+                    {
+                      "text": "\u001b[90m[query] \u001b[39mselect \"e0\".* from \"job_post_raw\" as \"e0\"\u001b[90m [took 2 ms]\u001b[39m\n"
                     }
                   ],
                   "stderr": [],
@@ -127,8 +362,8 @@
               "status": "expected"
             }
           ],
-          "file": "tests/connection.test.js",
-          "line": 178,
+          "file": "tests/processjobstreet.test.js",
+          "line": 41,
           "column": 6
         }
       ]
