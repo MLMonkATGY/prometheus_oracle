@@ -8,7 +8,7 @@ import { EntityManager, IDatabaseDriver, Connection } from "@mikro-orm/core";
 
 const func1 = (allUrls:Array<string>)=>{
 	const spec_url ="https://www.jobstreet.com.my/en/job/";
-
+	const takeTopN = 5
 	let result = allUrls.filter(function (e){
 		if(e.includes(spec_url)){
 			return true
@@ -16,6 +16,7 @@ const func1 = (allUrls:Array<string>)=>{
 			return false
 		}
 	});
+	result = result.slice(0, takeTopN)
 	return result;
 }
 function randomIntFromInterval(min: number, max: number) { // min and max included 
@@ -109,7 +110,7 @@ const getEachContent=async (targetUrls: string[],page:Page) => {
 	}
 }
 
-test.only("basic test", async ({ page }) => {
+test("jobstreet get data test", async ({ page }) => {
 	await runTest(page).catch(err=>{
 		console.log(err)
 	})
