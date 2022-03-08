@@ -21,7 +21,7 @@ import { url } from "inspector";
 
 // }
 
-test.only("process job street", async ({ page }) => {
+test("process job street", async ({ page }) => {
 	await getAllFromJobPostRow()
 
 	// const ptime=getPostedTime("Posted on 11-Feb-22")
