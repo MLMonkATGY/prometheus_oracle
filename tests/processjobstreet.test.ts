@@ -9,19 +9,15 @@ import JobStreetTable from "../src/repo/table/JobStreetTable.js";
 import { QueryOrder } from "@mikro-orm/core";
 import { url } from "inspector";
 
+function subtractTimeFromDate(objDate:Date, intHours:number) {
+    var numberOfMlSeconds = objDate.getTime();
+    var addMlSeconds = (intHours * 60) * 60 * 1000;
+    var newDateObj = new Date(numberOfMlSeconds - addMlSeconds);
+ 
+    return newDateObj;
+}
+test.only("process job street", async ({ page }) => {
 
-// const getPostedTime=(time:string)=>{
-// 	const condition='on'
-// 	if(time.includes(condition)){
-// 		let postedTime=time.split('Posted on ')
-// 		return postedTime[1]
-// 	}else{
-// 		return "asd"
-// 	}
-
-// }
-
-test("process job street", async ({ page }) => {
 	await getAllFromJobPostRow()
 
 	// const ptime=getPostedTime("Posted on 11-Feb-22")
@@ -152,7 +148,7 @@ const getAllFromJobPostRow=async()=>{
 			raw.version,
 			temp_postedTime,);
 		
-		// await em.persistAndFlush(jobStreetElement)
+		await em.persistAndFlush(jobStreetElement)
 			
 		console.log()
 		
