@@ -15,29 +15,29 @@ class JobStreetTable {
 	jobName!: string;
 	@Property({ nullable: false })
 	companyName!: string;
-	@Property({ nullable: false })
+	@Property({ nullable: true })
 	companyOverview!: string[];
 	@Property({ nullable: true })
 	companySize!: string;
-	@Property({ nullable: false })
+	@Property({ nullable: true })
 	location!: string;
 	@Property({ nullable: true })
 	benefits?: string;
 	@Property({ nullable: true })
 	averageProcessingTime!: number;
-	@Property({ nullable: false })
+	@Property({ nullable: true })
 	industryType!: string;
-	@Property({ nullable: false })
+	@Property({ nullable: true })
 	jobDescription!: string[];
 	@Property({ nullable: true })
 	careerLevel?: string;
-	@Property({ nullable: false })
+	@Property({ nullable: true })
 	qualification!: string;
 	@Property({ nullable: true })
 	yearsOfExperience?: number;
 	@Property({ nullable: true })
 	jobType?: string;
-	@Property({ nullable: false })
+	@Property({ nullable: true })
 	jobSpecializations!: string;
 	@Property({ nullable: true })
 	salary?: string;

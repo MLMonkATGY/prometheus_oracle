@@ -152,7 +152,7 @@ const getAllFromJobPostRow=async()=>{
 			raw.version,
 			temp_postedTime,);
 		
-		await em.persistAndFlush(jobStreetElement)
+		// await em.persistAndFlush(jobStreetElement)
 			
 		console.log()
 		
