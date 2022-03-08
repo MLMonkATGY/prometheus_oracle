@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"test": "tsc --incremental -p tsconfig.json && playwright test -c out"
+		"test": "tsc -p tsconfig.json && playwright test -c out"
 	},
 	"repository": {
 		"type": "git",

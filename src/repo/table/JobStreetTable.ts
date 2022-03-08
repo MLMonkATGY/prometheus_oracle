@@ -16,7 +16,7 @@ class JobStreetTable {
 	@Property({ nullable: false })
 	companyName!: string;
 	@Property({ nullable: false })
-	companyOverview!: string;
+	companyOverview!: string[];
 	@Property({ nullable: true })
 	companySize!: string;
 	@Property({ nullable: false })
@@ -24,17 +24,17 @@ class JobStreetTable {
 	@Property({ nullable: true })
 	benefits?: string;
 	@Property({ nullable: true })
-	averageProcessingTime!: string;
+	averageProcessingTime!: number;
 	@Property({ nullable: false })
 	industryType!: string;
 	@Property({ nullable: false })
-	jobDescription!: string;
+	jobDescription!: string[];
 	@Property({ nullable: true })
 	careerLevel?: string;
 	@Property({ nullable: false })
 	qualification!: string;
 	@Property({ nullable: true })
-	yearsOfExperience?: string;
+	yearsOfExperience?: number;
 	@Property({ nullable: true })
 	jobType?: string;
 	@Property({ nullable: false })
@@ -45,7 +45,7 @@ class JobStreetTable {
 	url!: string;
 
 	@Property({ nullable: false })
-	postedTime: string;
+	postedTime: Date = new Date();
 	@Property()
 	createdAt: Date = new Date();
 	@Property({ onUpdate: () => new Date() })
@@ -56,22 +56,22 @@ class JobStreetTable {
 	constructor(
 		jobName: string,
 		companyName: string,
-		companyOverview: string,
+		companyOverview: string[],
 		companySize: string,
 		location: string,
 		benefits: string,
-		averageProcessingTime: string,
+		averageProcessingTime: number,
 		industryType: string,
-		jobDescription: string,
+		jobDescription: string[],
 		careerLevel: string,
 		qualification: string,
-		yearsOfExperience: string,
+		yearsOfExperience: number,
 		jobType: string,
 		jobSpecializations: string,
 		salary: string,
 		url: string,
 		version: number,
-		postedTime: string
+		postedTime: Date
 	) {
 		this.jobName = jobName;
 		this.companyName = companyName;
