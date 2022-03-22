@@ -9,13 +9,7 @@ import JobStreetTable from "../src/repo/table/JobStreetTable.js";
 import { Connection, IDatabaseDriver, MikroORM, QueryOrder } from "@mikro-orm/core";
 import { EntityManager } from "@mikro-orm/postgresql";
 
-const subtractTimeFromDate=async(objDate:Date, intHours:number)=>{
-	var numberOfMlSeconds = objDate.getTime()
-	var addMlSeconds = (intHours * 60) * 60 * 1000
-    var newDateObj = new Date(numberOfMlSeconds - addMlSeconds)	 
-	
-	return newDateObj
-}
+
 
 test("process job street", async ({ page }) => {
 	await getAllFromJobPostRow()
@@ -27,7 +21,7 @@ test("process job street", async ({ page }) => {
 const getAllFromJobPostRow=async()=>{
 
 	let em = await ConnectionManager(true);
-	const getAll = await em.find(JobPostRaw, {},{limit:5000})
+	const getAll = await em.find(JobPostRaw, {},{limit:3000})
 
 	for (let index = 0; index < getAll.length; index++) {
 		const raw = getAll[index];
@@ -81,7 +75,7 @@ const getAllFromJobPostRow=async()=>{
 		// 	temp_inds,
 		// 	temp_benef
 		// )
-		
+
 		for (let cat = 0; cat < contents.length; cat++) {
 			temp_jobName=contents[0]
 			temp_companyName=contents[1]
@@ -175,8 +169,14 @@ const getAllFromJobPostRow=async()=>{
 			raw.version,
 			temp_postedTime
 		)
+		const recordNumBefore = await em.count(JobStreetTable, {});
 		await em.persistAndFlush(jobStreetEl)
-		console.log()
+
+		const recordNumAfter = await em.count(JobStreetTable, {});
+		expect(recordNumAfter).toBe(recordNumBefore + 1);
+
+		const inserted = await em.findOneOrFail(JobStreetTable, { id: jobStreetEl.id });
+		expect(inserted.jobName).toBe(jobStreetEl.jobName);
 	}
 }
 
@@ -302,7 +302,13 @@ const extractData = async(
 	await em.persistAndFlush(jobStreetEl)
 	console.log()
 }
-
+const subtractTimeFromDate=async(objDate:Date, intHours:number)=>{
+	var numberOfMlSeconds = objDate.getTime()
+	var addMlSeconds = (intHours * 60) * 60 * 1000
+    var newDateObj = new Date(numberOfMlSeconds - addMlSeconds)	 
+	
+	return newDateObj
+}
 const processYearOfExperience = (yoExperience:string) => {
 	const result = parseInt(yoExperience)
 	return result

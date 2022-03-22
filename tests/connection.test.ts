@@ -188,7 +188,6 @@ test("test add find ", async ({ page }) => {
 
 test("test jobStreeet table", async ({ page }) => {
 	const em = await ConnectionManager(true);
-	const recordNumBefore = await em.count(JobStreetTable, {});
 
 	const location = "QQS";
 	const jobName = "QQS";
@@ -232,6 +231,8 @@ test("test jobStreeet table", async ({ page }) => {
 		version,
 		postedTime
 	);
+	const recordNumBefore = await em.count(JobStreetTable, {});
+
 	em.persist(payload);
 	await em.flush();
 	const recordNumAfter = await em.count(JobStreetTable, {});
