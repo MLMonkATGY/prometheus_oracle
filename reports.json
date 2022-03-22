@@ -45,7 +45,7 @@
     "version": "1.17.2",
     "workers": 3,
     "webServer": null,
-    "__testGroupsCount": 1
+    "__testGroupsCount": 2
   },
   "suites": [
     {
