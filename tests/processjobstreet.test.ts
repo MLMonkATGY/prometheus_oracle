@@ -57,7 +57,7 @@ const getAllFromJobPostRow=async()=>{
 		let locationAddiCompyInfo:number=-1
 
 		// await extractData(
-		// 	// em,
+		// 	em,
 		// 	raw,
 		// 	contents,
 		// 	temp_jobName,
@@ -81,6 +81,7 @@ const getAllFromJobPostRow=async()=>{
 		// 	temp_inds,
 		// 	temp_benef
 		// )
+		
 		for (let cat = 0; cat < contents.length; cat++) {
 			temp_jobName=contents[0]
 			temp_companyName=contents[1]
