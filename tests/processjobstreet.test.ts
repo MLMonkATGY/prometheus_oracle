@@ -21,7 +21,7 @@ test("process job street", async ({ page }) => {
 const getAllFromJobPostRow=async()=>{
 
 	let em = await ConnectionManager(true);
-	const getAll = await em.find(JobPostRaw, {},{limit:3000})
+	const getAll = await em.find(JobPostRaw, {},{limit:5})
 
 	for (let index = 0; index < getAll.length; index++) {
 		const raw = getAll[index];
