@@ -73,6 +73,7 @@ const getAllFromJobPostRow=async()=>{
 			}
 			else if(locationJobHigts != -1 && locationAdtnInfo != -1 ){
 				const arr_jobDes = contents.slice(locationJobHigts,locationAdtnInfo)
+				temp_jobDes = arr_jobDes.join("\n")
 				locationJobHigts = -1
 				locationAdtnInfo = -1
 			}
@@ -86,6 +87,7 @@ const getAllFromJobPostRow=async()=>{
 			}
 			else if(locationCmpOvr != -1 && locationAddiCompyInfo != -1 ){
 				const arr_compOver=contents.slice(locationCmpOvr,locationAddiCompyInfo)
+				temp_compOver = arr_compOver.join("\n")
 				locationCmpOvr= -1
 				locationAddiCompyInfo = -1
 			}

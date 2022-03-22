@@ -15,7 +15,7 @@ class JobStreetTable {
 	jobName!: string;
 	@Property({ nullable: false })
 	companyName!: string;
-	@Property({ nullable: true })
+	@Property({ columnType: "text",nullable: true })
 	companyOverview!: string;
 	@Property({ nullable: true })
 	companySize!: string;
@@ -27,7 +27,7 @@ class JobStreetTable {
 	averageProcessingTime!: number;
 	@Property({ nullable: true })
 	industryType!: string;
-	@Property({ nullable: true })
+	@Property({ columnType: "text",nullable: true })
 	jobDescription!: string;
 	@Property({ nullable: true })
 	careerLevel?: string;
