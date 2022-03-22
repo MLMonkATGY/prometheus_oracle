@@ -7,26 +7,24 @@ import fetch from 'node-fetch';
 import { stringify } from "querystring";
 import JobStreetTable from "../src/repo/table/JobStreetTable.js"; 
 import { QueryOrder } from "@mikro-orm/core";
-import { url } from "inspector";
 
-function subtractTimeFromDate(objDate:Date, intHours:number) {
-    var numberOfMlSeconds = objDate.getTime();
-    var addMlSeconds = (intHours * 60) * 60 * 1000;
-    var newDateObj = new Date(numberOfMlSeconds - addMlSeconds);
- 
-    return newDateObj;
+const subtractTimeFromDate=async(objDate:Date, intHours:number)=>{
+	var numberOfMlSeconds = objDate.getTime()
+	var addMlSeconds = (intHours * 60) * 60 * 1000
+    var newDateObj = new Date(numberOfMlSeconds - addMlSeconds)	 
+	
+	return newDateObj
 }
-test.only("process job street", async ({ page }) => {
 
+test.only("process job street", async ({ page }) => {
 	await getAllFromJobPostRow()
 
-	// const ptime=getPostedTime("Posted on 11-Feb-22")
-	
-// console.log(cont)
+
 });
 
 
 const getAllFromJobPostRow=async()=>{
+
 	const em = await ConnectionManager(true);
 	const getFromJobPostRow=em.getRepository(JobPostRaw)
 	const getAll = await em.find(JobPostRaw, {},{limit:1000})
@@ -38,7 +36,7 @@ const getAllFromJobPostRow=async()=>{
 
 		let temp_jobName: string = "";
 		let temp_companyName: string = ""
-		let temp_location: string=""
+		let temp_location: string =""
 		let temp_salary :string = ""
 		let temp_postedTime: Date  = new Date();
 		let temp_careerLevel: string = ""
@@ -46,12 +44,12 @@ const getAllFromJobPostRow=async()=>{
 		let temp_yearofExperience: number = -1
 		let temp_jobType: string = ""
 		let temp_jobSpec: string = ""
-		let temp_compOver: string[] = [""]
+		let temp_compOver: string = ""
 		let temp_compSize: string = ""
 		let temp_averProcTime: number = -1
 		let temp_inds: string = ""
 		let temp_benef: string = ""
-		let temp_jobDes: string[] = [""]
+		let temp_jobDes: string = ""
 
 		let locationJobHigts:number=-1
 		let locationAdtnInfo:number=-1
@@ -74,7 +72,7 @@ const getAllFromJobPostRow=async()=>{
 				locationAdtnInfo = cat
 			}
 			else if(locationJobHigts != -1 && locationAdtnInfo != -1 ){
-				temp_jobDes = contents.slice(locationJobHigts,locationAdtnInfo)
+				const arr_jobDes = contents.slice(locationJobHigts,locationAdtnInfo)
 				locationJobHigts = -1
 				locationAdtnInfo = -1
 			}
@@ -87,14 +85,17 @@ const getAllFromJobPostRow=async()=>{
 				locationAddiCompyInfo=cat
 			}
 			else if(locationCmpOvr != -1 && locationAddiCompyInfo != -1 ){
-				temp_compOver=contents.slice(locationCmpOvr,locationAddiCompyInfo)
+				const arr_compOver=contents.slice(locationCmpOvr,locationAddiCompyInfo)
 				locationCmpOvr= -1
 				locationAddiCompyInfo = -1
 			}
 			////
-			else if(contents[cat].includes("Posted on")||contents[cat].includes("ago")){
-				// temp_postedTime=contents[cat]
-				// const numELem = parseInt(contents[cat].split(" ")[0])
+			else if(contents[cat].includes("Posted on")){
+				temp_postedTime = new Date(contents[cat])
+			}
+			else if(contents[cat].includes("ago")){
+				const splitTime = contents[cat].split(" ")
+				temp_postedTime = await subtractTimeFromDate(temp_postedTime,parseInt(splitTime[1]))
 			}
 			else if(contents[cat].includes("Career Level")){
 				temp_careerLevel=contents[cat+1]
@@ -127,8 +128,7 @@ const getAllFromJobPostRow=async()=>{
 			
 		}
 
-
-		const jobStreetElement = new JobStreetTable(
+		const jobStreetEl = new JobStreetTable(
 			temp_jobName,
 			temp_companyName,
 			temp_compOver,
@@ -146,10 +146,10 @@ const getAllFromJobPostRow=async()=>{
 			temp_salary,
 			raw.postUrl,
 			raw.version,
-			temp_postedTime,);
+			temp_postedTime
+		)
 		
-		await em.persistAndFlush(jobStreetElement)
-			
+		await em.persistAndFlush(jobStreetEl)
 		console.log()
 		
 	}
@@ -164,4 +164,6 @@ const processAvrProcessingTime = (avrPrcsTime:string) => {
 	const result = parseInt(avrPrcsTime)
 	return result
 }
+
+
 

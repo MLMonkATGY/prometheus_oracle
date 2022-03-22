@@ -56,7 +56,7 @@
       "specs": [
         {
           "title": "process job street",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -67,26 +67,15 @@
               "results": [
                 {
                   "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 7241,
+                  "status": "failed",
+                  "duration": 35474,
+                  "error": {
+                    "message": "insert into \"job_street_table\" (\"average_processing_time\", \"benefits\", \"career_level\", \"company_name\", \"company_overview\", \"company_size\", \"created_at\", \"industry_type\", \"job_description\", \"job_name\", \"job_specializations\", \"job_type\", \"location\", \"posted_time\", \"qualification\", \"salary\", \"updated_at\", \"url\", \"years_of_experience\") values (23, 'Medical, Regular hours, Mondays - Fridays, Business (e.g. Shirts), Performance Allowance', '', 'Mersing Construction & Engineering Sdn Bhd', '', '51 - 200 Employees', '2022-03-22T08:22:35.597Z', 'Construction / Building / Engineering', '', 'Software Developer', 'Computer/Information Technology, IT-Software', 'Full-Time', 'Selangor', '2022-03-22T01:22:00.523Z', 'Not Specified', '', '2022-03-22T08:22:35.597Z', 'https://www.jobstreet.com.my/en/job/software-developer-4861918?jobId=jobstreet-my-job-4861918&sectionRank=1&token=0~34e24c1e-2e1c-40ba-ba25-f900be29885b&fr=SRP%20View%20In%20New%20Tab', 2) returning \"id\", \"version\" - relation \"job_street_table\" does not exist",
+                    "stack": "TableNotFoundException: insert into \"job_street_table\" (\"average_processing_time\", \"benefits\", \"career_level\", \"company_name\", \"company_overview\", \"company_size\", \"created_at\", \"industry_type\", \"job_description\", \"job_name\", \"job_specializations\", \"job_type\", \"location\", \"posted_time\", \"qualification\", \"salary\", \"updated_at\", \"url\", \"years_of_experience\") values (23, 'Medical, Regular hours, Mondays - Fridays, Business (e.g. Shirts), Performance Allowance', '', 'Mersing Construction & Engineering Sdn Bhd', '', '51 - 200 Employees', '2022-03-22T08:22:35.597Z', 'Construction / Building / Engineering', '', 'Software Developer', 'Computer/Information Technology, IT-Software', 'Full-Time', 'Selangor', '2022-03-22T01:22:00.523Z', 'Not Specified', '', '2022-03-22T08:22:35.597Z', 'https://www.jobstreet.com.my/en/job/software-developer-4861918?jobId=jobstreet-my-job-4861918&sectionRank=1&token=0~34e24c1e-2e1c-40ba-ba25-f900be29885b&fr=SRP%20View%20In%20New%20Tab', 2) returning \"id\", \"version\" - relation \"job_street_table\" does not exist\n    at PostgreSqlExceptionConverter.convertException (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/postgresql/PostgreSqlExceptionConverter.js:36:24)\n    at PostgreSqlDriver.convertException (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/core/drivers/DatabaseDriver.js:202:54)\n    at /home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/core/drivers/DatabaseDriver.js:206:24\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at PostgreSqlDriver.nativeInsert (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/knex/AbstractSqlDriver.js:154:21)\n    at ChangeSetPersister.persistNewEntity (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/core/unit-of-work/ChangeSetPersister.js:56:21)\n    at ChangeSetPersister.executeInserts (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/core/unit-of-work/ChangeSetPersister.js:25:13)\n    at UnitOfWork.commitCreateChangeSets (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/core/unit-of-work/UnitOfWork.js:531:9)\n    at UnitOfWork.persistToDatabase (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/core/unit-of-work/UnitOfWork.js:484:13)\n    at PostgreSqlConnection.transactional (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/knex/AbstractSqlConnection.js:53:25)\n    at UnitOfWork.commit (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/core/unit-of-work/UnitOfWork.js:189:17)\n    at SqlEntityManager.flush (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/core/EntityManager.js:498:9)\n    at SqlEntityManager.persistAndFlush (/home/alextay96/geeyong/prometheus_oracle/node_modules/@mikro-orm/core/EntityManager.js:450:9)\n    at getAllFromJobPostRow (file:///home/alextay96/geeyong/prometheus_oracle/out/tests/processjobstreet.test.js:111:9)\n    at file:///home/alextay96/geeyong/prometheus_oracle/out/tests/processjobstreet.test.js:12:5\n\nprevious error: insert into \"job_street_table\" (\"average_processing_time\", \"benefits\", \"career_level\", \"company_name\", \"company_overview\", \"company_size\", \"created_at\", \"industry_type\", \"job_description\", \"job_name\", \"job_specializations\", \"job_type\", \"location\", \"posted_time\", \"qualification\", \"salary\", \"updated_at\", \"url\", \"years_of_experience\") values (23, 'Medical, Regular hours, Mondays - Fridays, Business (e.g. Shirts), Performance Allowance', '', 'Mersing Construction & Engineering Sdn Bhd', '', '51 - 200 Employees', '2022-03-22T08:22:35.597Z', 'Construction / Building / Engineering', '', 'Software Developer', 'Computer/Information Technology, IT-Software', 'Full-Time', 'Selangor', '2022-03-22T01:22:00.523Z', 'Not Specified', '', '2022-03-22T08:22:35.597Z', 'https://www.jobstreet.com.my/en/job/software-developer-4861918?jobId=jobstreet-my-job-4861918&sectionRank=1&token=0~34e24c1e-2e1c-40ba-ba25-f900be29885b&fr=SRP%20View%20In%20New%20Tab', 2) returning \"id\", \"version\" - relation \"job_street_table\" does not exist\n    at Parser.parseErrorMessage (/home/alextay96/geeyong/prometheus_oracle/node_modules/pg-protocol/src/parser.ts:369:69)\n    at Parser.handlePacket (/home/alextay96/geeyong/prometheus_oracle/node_modules/pg-protocol/src/parser.ts:188:21)\n    at Parser.parse (/home/alextay96/geeyong/prometheus_oracle/node_modules/pg-protocol/src/parser.ts:103:30)\n    at Socket.<anonymous> (/home/alextay96/geeyong/prometheus_oracle/node_modules/pg-protocol/src/index.ts:7:48)\n    at Socket.emit (node:events:520:28)\n    at Socket.emit (node:domain:475:12)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)\n    at TCP.callbackTrampoline (node:internal/async_hooks:130:17)"
+                  },
                   "stdout": [
                     {
-                      "text": "\u001b[90m[discovery] \u001b[39mORM entity discovery started, using \u001b[36mReflectMetadataProvider\u001b[39m\n"
-                    },
-                    {
-                      "text": "{\n  jobName: \u001b[32m''\u001b[39m,\n  company: \u001b[32m''\u001b[39m,\n  location: \u001b[32m''\u001b[39m,\n  salary: \u001b[32m''\u001b[39m,\n  postTime: \u001b[32m''\u001b[39m,\n  careerLevel: \u001b[32m''\u001b[39m,\n  qualification: \u001b[32m''\u001b[39m,\n  yearOfExperience: \u001b[32m''\u001b[39m,\n  jobType: \u001b[32m''\u001b[39m,\n  jobSpecializations: \u001b[32m''\u001b[39m,\n  companyOverview: \u001b[32m' '\u001b[39m,\n  companySize: \u001b[32m' '\u001b[39m,\n  averageProcessingTime: \u001b[32m' '\u001b[39m,\n  industry: \u001b[32m''\u001b[39m,\n  benefits: \u001b[32m''\u001b[39m,\n  jobDescription: \u001b[32m''\u001b[39m,\n  url: \u001b[32m''\u001b[39m,\n  version: \u001b[33m1\u001b[39m,\n  postedTime: \u001b[32m'11-Feb-22'\u001b[39m\n}\n"
-                    },
-                    {
-                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobStreetTable\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[discovery] \u001b[39m- processing entity \u001b[36mJobPostRaw\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[discovery] \u001b[39m- entity discovery finished, found \u001b[32m2\u001b[39m entities, took \u001b[32m6883 ms\u001b[39m\n"
-                    },
-                    {
-                      "text": "\u001b[90m[info] \u001b[39mMikroORM successfully connected to database \u001b[32mprometheus_oracle on postgresql://oracle_alextay:*****@172.78.0.44:5432\u001b[39m\n"
+                      "text": "Relations already exist. Skip creation.\n"
                     }
                   ],
                   "stderr": [],
@@ -94,11 +83,11 @@
                   "attachments": []
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "file": "tests/processjobstreet.test.js",
-          "line": 41,
+          "line": 11,
           "column": 6
         }
       ]

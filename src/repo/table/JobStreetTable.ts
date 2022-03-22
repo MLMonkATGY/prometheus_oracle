@@ -16,7 +16,7 @@ class JobStreetTable {
 	@Property({ nullable: false })
 	companyName!: string;
 	@Property({ nullable: true })
-	companyOverview!: string[];
+	companyOverview!: string;
 	@Property({ nullable: true })
 	companySize!: string;
 	@Property({ nullable: true })
@@ -28,7 +28,7 @@ class JobStreetTable {
 	@Property({ nullable: true })
 	industryType!: string;
 	@Property({ nullable: true })
-	jobDescription!: string[];
+	jobDescription!: string;
 	@Property({ nullable: true })
 	careerLevel?: string;
 	@Property({ nullable: true })
@@ -56,13 +56,13 @@ class JobStreetTable {
 	constructor(
 		jobName: string,
 		companyName: string,
-		companyOverview: string[],
+		companyOverview: string,
 		companySize: string,
 		location: string,
 		benefits: string,
 		averageProcessingTime: number,
 		industryType: string,
-		jobDescription: string[],
+		jobDescription: string,
 		careerLevel: string,
 		qualification: string,
 		yearsOfExperience: number,

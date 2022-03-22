@@ -19,7 +19,7 @@ export const ConnectionManager = async (init: boolean = false) => {
 	const orm = await MikroORM.init({
 		entities: GetTableEntity(),
 		baseDir: cwd,
-		debug: true,
+		debug: false,
 		dbName: "prometheus_oracle",
 		type: "postgresql", // one of `mongo` | `mysql` | `mariadb` | `postgresql` | `sqlite`
 		clientUrl: `postgresql://${username}:${password}@${ip}:5432`, // defaults to 'mongodb://localhost:27017' for mongodb driver
