@@ -9,7 +9,7 @@ import JobStreetTable from "../src/repo/table/JobStreetTable.js";
 import { Connection, IDatabaseDriver, MikroORM, QueryOrder } from "@mikro-orm/core";
 import { EntityManager } from "@mikro-orm/postgresql";
 
-
+//
 
 test("process job street", async ({ page }) => {
 	await getAllFromJobPostRow()
