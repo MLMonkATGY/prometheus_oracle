@@ -206,7 +206,7 @@ test("test jobStreeet table", async ({ page }) => {
 	const salary = "asd";
 	const contentFormat = ContentFormat.JSON;
 	const url = "asd";
-	const postedTime = "sd";
+	const postedTime = new Date()
 
 	const version = 1;
 	const rawContent = "asd";
