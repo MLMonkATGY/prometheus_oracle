@@ -188,7 +188,6 @@ test("test add find ", async ({ page }) => {
 
 test("test jobStreeet table", async ({ page }) => {
 	const em = await ConnectionManager(true);
-	const recordNumBefore = await em.count(JobStreetTable, {});
 
 	const location = "QQS";
 	const jobName = "QQS";
@@ -196,18 +195,18 @@ test("test jobStreeet table", async ({ page }) => {
 	const companyOverview = "asdasd";
 	const companySize = "asd";
 	const benefits = "asd";
-	const averageProcessingTime = "asd";
+	const averageProcessingTime = -1;
 	const industryType = "asd";
 	const jobDescription = "asd";
 	const careerLevel = "asd";
 	const qualification = "asd";
-	const yearsOfExperience = "asd";
+	const yearsOfExperience = -1;
 	const jobType = "asd";
 	const jobSpecializations = "asd";
 	const salary = "asd";
 	const contentFormat = ContentFormat.JSON;
 	const url = "asd";
-	const postedTime = "sd";
+	const postedTime = new Date()
 
 	const version = 1;
 	const rawContent = "asd";
@@ -232,6 +231,8 @@ test("test jobStreeet table", async ({ page }) => {
 		version,
 		postedTime
 	);
+	const recordNumBefore = await em.count(JobStreetTable, {});
+
 	em.persist(payload);
 	await em.flush();
 	const recordNumAfter = await em.count(JobStreetTable, {});
