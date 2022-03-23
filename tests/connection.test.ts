@@ -236,7 +236,7 @@ test("test jobStreeet table", async ({ page }) => {
 	em.persist(payload);
 	await em.flush();
 	const recordNumAfter = await em.count(JobStreetTable, {});
-	expect(recordNumAfter).toBe(recordNumBefore + 1);
+	expect(recordNumAfter).toBeGreaterThan(recordNumBefore)
 	const inserted = await em.findOneOrFail(JobStreetTable, { id: payload.id });
 	expect(payload.url).toBe(inserted.url);
 	expect(payload.jobName).toBe(inserted.jobName);
