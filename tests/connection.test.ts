@@ -3,6 +3,8 @@ import ContentFormat from "../src/domain/ContentFormat.enum.js";
 import { ConnectionManager } from "../src/repo/postgres/ConnectionManager.js";
 import JobPostRaw from "../src/repo/table/JobPostRaw.js";
 import JobStreetTable from "../src/repo/table/JobStreetTable.js";
+import WobbRaw from "../src/repo/table/WobbRaw.js";
+import WobbTable from "../src/repo/table/WobbTable.js";
 
 test("test connection ", async ({ page }) => {
 	const conn = await ConnectionManager();
@@ -159,7 +161,114 @@ const getRawContent = () => {
 	}`;
 	return rawContent;
 };
-test("test add find ", async ({ page }) => {
+
+const wobbRawContent = () => {
+	const rawContent = 'hiredly-logo\n'
+	'\n'
+	'Sea Freight Coordinator & Customer Service\n'
+	'Network Freight Sdn Bhd\n'
+	'\n'
+	'Kota Kemuning, Shah Alam 40460\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'Job Description\n'
+	' \n'
+	'\n'
+	'Job description\n'
+	'\n'
+	'Check competitive rates with Liners, box operators and agents for FCL and LCL\n'
+	'\n'
+	'Communicate daily with operation team on export declaration and goods collections.\n'
+	'\n'
+	'Provide Shipping Instructions to Liners and related operators.\n'
+	'\n'
+	'Follow up closely until vessel departs and update to respective customers.\n'
+	'\n'
+	'Application of Export Permits.\n'
+	'\n'
+	'Communicate with Haulage company on the container positioning.\n'
+	'\n'
+	'Good Attitude, able to multi tasks and communicate efficiently with customers.\n'
+	'\n'
+	'Any other related jobs.\n'
+	'\n'
+	'Working Hours on 5 and 1/2 days (8.30am to 5.30pm) Monday to Friday with alternate Saturday off after confirmation.\n'
+	'\n'
+	'Working Experience of at least one year and able to start work immediately an added advantage\n'
+	'\n'
+	'Job Type: Full-time\n'
+	'\n'
+	'Job Requirements\n'
+	'Secondary School SPM/O Level, \n'
+	'\n'
+	'Diploma, Advanced/Higher/Graduate Diploma\n'
+	'\n'
+	'Our Jobs\n'
+	'Filter by Specialisation\n'
+	'Similar Jobs You Might Like\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'\n'
+	'Hiredly\n'
+	'\n'
+	'We are on an unwavering mission to be Asia’s most loved job search platform; helping people discover any job with any employer in the market.\n'
+	'\n'
+	'Our Strategic Partner\n'
+	'\n'
+	'linkedin\n'
+	'Hiredly\n'
+	'\n'
+	'About Us\n'
+	'Contact Us\n'
+	'Newsroom\n'
+	'FAQ\n'
+	'Jobseeker\n'
+	'\n'
+	'Jobs by Specialisation\n'
+	'Jobs by Location\n'
+	'Jobs by Type\n'
+	'Jobs by Experience Level\n'
+	'Companies\n'
+	'Advice\n'
+	'Employer\n'
+	'\n'
+	'Start Hiring Today\n'
+	'Headhunting Service\n'
+	'app_store_download_button\n'
+	'google_play_download_button\n'
+	'app_gallery_download_button\n'
+	'app_gallery_download_button\n'
+	'© Copyright 2015 - 2022 Agensi Pekerjaan Wobb Sdn. Bhd.\n'
+	'\n'
+	'Community Guidelines\n'
+	'Privacy Policy\n'
+	'Terms & Conditions\n'
+	'Site Map\n'
+	''
+	return rawContent
+}
+
+test("test add find ", async () => {
 	const em = await ConnectionManager(true);
 	const recordNumBefore = await em.count(JobPostRaw, {});
 
@@ -186,7 +295,7 @@ test("test add find ", async ({ page }) => {
 	expect(inserted.portalUrl).toBe(portalUrl);
 });
 
-test("test jobStreeet table", async ({ page }) => {
+test("test jobStreeet table", async () => {
 	const em = await ConnectionManager(true);
 
 	const location = "QQS";
@@ -204,13 +313,10 @@ test("test jobStreeet table", async ({ page }) => {
 	const jobType = "asd";
 	const jobSpecializations = "asd";
 	const salary = "asd";
-	const contentFormat = ContentFormat.JSON;
 	const url = "asd";
 	const postedTime = new Date()
 
 	const version = 1;
-	const rawContent = "asd";
-	const rawContentType = ContentFormat.JSON;
 	const payload = new JobStreetTable(
 		jobName,
 		companyName,
@@ -241,3 +347,69 @@ test("test jobStreeet table", async ({ page }) => {
 	expect(payload.url).toBe(inserted.url);
 	expect(payload.jobName).toBe(inserted.jobName);
 });
+
+test("test wobbRaw table",async () => {
+	const em = await ConnectionManager(true);
+
+	const postUrl ="https://my.hiredly.com/jobs/jobs-malaysia-network-freight-sdn-bhd-job-sea-freight-coordinator-customer-service"
+	const version = 1;
+	const rawContent = wobbRawContent();
+	const rawContentType = ContentFormat.TEXT;
+
+	const payload = new WobbRaw(
+		postUrl,
+		version,
+		rawContent,
+		rawContentType
+	);
+	const recordNumBefore = await em.count(WobbRaw, {});
+
+	await em.persistAndFlush(payload)
+	const recordNumAfter = await em.count(WobbRaw, {});
+	expect(recordNumAfter).toBeGreaterThan(recordNumBefore);
+
+	const inserted = await em.findOneOrFail(WobbRaw, { id: payload.id });
+	expect(inserted.postUrl).not.toBeDefined();
+})
+
+test("test wobb table",async () => {
+	const em = await ConnectionManager(true);
+
+	const location = "QQS";
+	const jobName = "QQS";
+	const companyName = "asd";
+	const companyOverview = "asdasd";
+	const benefits = "asd";
+	const industryType = "asd";
+	const jobDescription = "asd";
+	const jobType = "asd";
+	const jobSpecializations = "asd";
+	const jobRequirements = "asd";
+	const postUrl = "asd";
+	const version = 1;
+	const companyAddress = "asd"
+
+	const payload = new WobbTable(
+		jobName,
+		companyName,
+		companyAddress,
+		companyOverview,
+		location,
+		benefits,
+		industryType,
+		jobDescription,
+		jobType,
+		jobSpecializations,
+		jobRequirements,
+		postUrl,
+		version
+	);
+	const recordNumBefore = await em.count(WobbTable, {});
+	await em.persistAndFlush(payload)
+	const recordNumAfter = await em.count(WobbTable, {});
+	expect(recordNumAfter).toBeGreaterThan(recordNumBefore)
+	
+	const inserted = await em.findOneOrFail(WobbTable, { id: payload.id });
+	expect(payload.postUrl).toBe(inserted.postUrl);
+	expect(payload.jobName).toBe(inserted.jobName);
+})
